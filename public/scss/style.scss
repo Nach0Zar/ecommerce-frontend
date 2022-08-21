@@ -1,0 +1,508 @@
+@import "variable";
+html, body{
+    margin: 0;
+}
+@mixin size($width, $height){
+    width: $width;
+    height: $height;
+}
+
+nav{
+    background-color: $negro;
+    @include size(100%, 50px);
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    .navLink{
+        text-align: center;
+        font-family: 'Akaya Kanadaka', cursive;
+    }
+}
+ul{
+    margin-top: 0;
+    list-style: none;
+}
+#carrito{
+    background-color: $blanco;
+    border-radius: 50px;
+    @include size(auto, 40px);
+    margin: -45px 0.5%;
+    margin-left: auto;
+
+}
+
+#containerTitulos, #containerBusqueda{
+    text-align: center;
+    display: block;
+    position: sticky;
+    h2, input, button{
+        font-family: 'Ramaraja', serif;
+    }
+    label{
+        display: inherit;
+        @include size(auto, auto);
+        margin-left: 2.5%;
+    }
+    input{
+        @include size(210px, 2.5rem);
+    }
+}
+#containerTitulos{
+    margin: 70px auto 20px auto ;
+}
+#containerBusqueda{
+    margin-bottom: 20px;
+}
+$estilo:(
+    displayText: block,
+    alignText: center,
+    font-h1: 'Bebas Neue',
+    font-cursive: cursive,
+    size50px: 50px
+);
+h1{
+    display: map-get($estilo, displayText);
+    text-align: map-get($estilo, alignText);
+    font-family: map-get($estilo, font-h1), map-get($estilo, font-cursive);
+    font-size: map-get($estilo, size50px);
+}
+
+
+#containerSlide{
+    @include size(600px, 400px);
+    margin: auto;
+    grid-area: anuncios;
+    #slideshow{
+        @include size(100%, 300px);
+        margin: auto;
+        overflow: hidden;
+        border-radius: 3%;
+        ul{
+            padding: 0;
+            display: flex;
+            @include size(300%, auto);
+            animation: rotar 20s infinite;
+        }
+        #slide{
+            width: 100%;
+            list-style: none;
+            img {
+                width: auto;
+                height: 300px;
+                width: 600px;
+            }
+        }
+    }
+}
+
+@each $container in containerSlide, recomendadosContainer, loginDiv, registerDiv{
+  ##{$container} h2{
+    display:block;
+    font-family: 'Bebas Neue', cursive;
+    margin: 20px;
+    text-align: center;
+    }
+}
+
+@keyframes rotar {
+    0%{
+        margin-left: 0;
+    }
+    25%{
+        margin-left: 0;
+    }
+    30%{
+        margin-left: -100%;
+    }
+    55%{
+        margin-left: -100%;
+    }
+    60%{
+        margin-left: -200%;
+    }
+    85%{
+        margin-left: -200%;
+    }
+
+}
+
+#recomendadosContainer{
+    min-width: 50%;
+    max-width: 100%;
+    grid-area: recomendados;
+    #recomendados{
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-around;
+        gap: 10px;
+        .itemDiv{
+            max-width: 440px; 
+            min-width: 420px;
+            @include size(450px, 500px);
+            border-radius: 5%;
+        } 
+        .itemRecomendado{
+            margin-bottom: 50px;
+            overflow: hidden;
+            flex-shrink: 3;
+            hr{
+                margin-top: 15px;
+                border-color: $grisClaro;
+            }
+            span{
+                display: block;
+                margin: auto;
+                color: $gris;
+                font-size: 30px;
+                text-align: center;
+            }
+            img{
+                @include size(auto, 300px);
+                display:block;
+                margin: 10% auto 0 auto;
+            }
+        }
+    }
+}
+
+.itemDiv, .preguntaDiv, #loginDiv, #registerDiv, #containerAboutus{
+    border: 1px lightgrey solid;
+}
+#loginDiv, #registerDiv{
+    display: table;
+    width: 40%;
+    @include size(40%, auto);
+    border-radius: 10px;
+    h2{
+        display: block;
+        text-align: center;
+        font-family: 'Bebas Neue', cursive;
+    }
+    img{
+        @include size(auto, 50px);
+    }
+}
+#loginDiv{
+    margin: 93px auto;
+    
+}
+#registerDiv{
+    margin: 39.5px auto;
+}
+.registerLabelForm, .loginLabelForm{
+    display: flex;
+    justify-content: space-evenly;
+    span{
+        display: inline-flex;
+        align-items: center;
+        min-width: 170px;
+        font-family: 'Noto Serif', serif;
+    }
+}
+
+.loginLabelForm{
+    margin: 30px;
+}
+.botonRegistroLogin{
+    display: table;
+    @include size(150px, 50px);
+    font-family: 'Bebas Neue', cursive;
+
+}
+#botonLoginForm{
+    @extend .botonRegistroLogin;
+    margin: 100px auto 60px;
+}
+#botonRegisterForm{
+    @extend .botonRegistroLogin;
+    margin: 50px auto 30px;
+}
+.registerLabelForm{
+    margin: 15px;
+}
+#containerAboutus{
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+}
+.preguntaDiv, #containerAboutus{
+    border-radius: 25px;
+    margin: 30px 30px;
+}
+.itemDiv:hover, .preguntaDiv:hover, #loginDiv:hover, #registerDiv:hover, #containerAboutus:hover{
+    box-shadow: $sombra; 
+}
+.preguntaDiv h3, .preguntaDiv p, #containerAboutus h2, #containerAboutus h3 #containerAboutus p{
+    margin: 20px 30px;
+}
+#bloqueTexto{
+    margin: 10px 20px;
+    text-align: center;
+}
+#catalogo{
+    display: grid;
+    grid-template-columns: 1fr 9fr;
+    grid-column-gap: 10px;
+    grid-template-areas: 
+    "barraLateral listaDeObjetos"
+    ;
+}
+#listaDeObjetos, #barraLateral{
+    display: inline-block;
+    padding: 10px 10px;
+}
+.elemento, .elementoCarrito, #barraLateral{
+    border: 1px lightgrey solid;
+}
+.elementoCarrito{
+    min-width: 520px;
+}
+#barraLateral{
+    grid-area: barraLateral;
+    margin-left: 5px;
+}
+#listaDeObjetos{
+    text-align: start;
+    grid-area: listaDeObjetos;
+}
+#resumenCarrito{
+    max-width: 500px;
+    width: 500px;
+}
+#listado{
+    display: flex;
+    justify-content: space-evenly;
+    column-gap: 50px;
+}
+.elemento, .elementoCarrito{
+    display: flex;
+}
+.tituloprecio, .tituloPrecioCarrito, .containerElementosResumen{
+    display: flex;
+    justify-content: space-between;
+}
+.tituloprecio, .containerElementosResumen{
+    flex-flow: row wrap;
+}
+.tituloPrecioCarrito{
+    flex-flow: row nowrap;
+    margin: 0 15px;
+    column-gap: 10px;
+}
+.precioMultiplicador{
+    display: flex;
+    flex-flow: row nowrap;
+}
+.precioElemento, .precioElementoTicket{
+    margin-right: 5px;
+}
+.categoria span, .nombreElemento, .nombreElementoTicket, .descripcionElemento, .precioElemento, .precioElementoTicket{
+    font-family: 'Bebas Neue', cursive;
+}
+.nombreElementoTicket{
+    display: flex;
+}
+$spans:(
+    categoria: medium,
+    subCategoria: small
+);
+@each $titulo, $tamanio in $spans{
+    .#{$titulo}>span{
+        font-size: $tamanio;
+    }
+}
+#listaDeObjetos{
+    margin-right: 6.5%;
+}
+.containerImagen{
+    display: flex;
+    max-width: 201px;
+}
+
+.containerImagen, .containerImagen>img{
+    @include size(auto, 150px);
+    justify-content: center;
+}
+.containerImagen>img{
+    max-width: 200px;
+}
+.containerImagen, .containerTextos, .containerTextosElementos{
+    min-width: 200px;
+    width: 100%;
+}
+.containerTextosBoton{
+    display: flex;
+    flex-flow: column nowrap;
+    width: 100%;
+    margin-left: 2.5%;
+}
+.containerTextos{
+    grid-area: containerTextos;
+    margin: 7% auto 0 0.5%;
+}
+.containerTextosElementos{
+    margin: auto auto;
+}
+#bodyIndex{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: 
+    "headerIndex"
+    "anuncios"
+    "recomendados"
+    "footer";
+}
+#headerIndex{
+    grid-area: headerIndex;
+}
+#listaCarrito{
+    margin: auto;
+}
+.botonEliminar{
+    display: flex;
+    vertical-align: middle;
+}
+@media screen and (min-width: 1200px) {
+    .elemento, .elementoCarrito{
+      flex-flow: row nowrap;
+    }
+    #listado{
+      justify-content: space-evenly;
+    }
+    
+  }
+
+@media screen and (min-width: 750px) {
+    .containerImagen{
+        border-right: 1px lightgrey solid;
+    }
+}
+  @media screen and (max-width: 750px) {
+    .elemento, .elementoCarrito, .containerBotones, .tituloPrecioCarrito {
+      flex-flow: column wrap;
+    }
+    .containerImagen, .nombreElemento, .precioElemento, .containerCantidad, .containerBotonEliminar{
+        margin: 5px auto;
+    }
+  }
+  @media screen and (max-width: 1100px) {
+    #listado {
+      flex-flow: column wrap;
+      justify-content: space-around;
+    }
+    .elementoCarrito{
+      max-width: 750px;
+      min-width: 750px;
+    }
+    .containerCantidadBotones{
+        display: flex;
+        margin: 10px auto;
+    }
+  }
+#containerTicketBoton{
+    margin: 0 auto;
+}
+#containerBotonCompra{
+    @extend .elementoCarrito;
+    border: none;
+}
+.containerBotonElemento{
+    display: flex;
+    justify-content: space-around;
+    margin: 0 0 10px 0;
+}
+.containerBotones{
+    grid-area: containerBotones;
+    padding-bottom: auto;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 5px 0 5px;
+}
+#resumenCarrito {
+    $triangle-size: 4px;
+    $stop1: $triangle-size * 1.42;
+    $stop2: $triangle-size * 0.7;
+    $stop1r: $stop1 + 0.01;
+    $stop2r: $stop2 + 0.01;
+    background: 
+      linear-gradient(135deg, transparent #{$stop1}, white #{$stop1r}) top left,
+      linear-gradient(45deg, white #{$stop2}, transparent #{$stop2r}) top left,
+      linear-gradient(135deg, white #{$stop2}, transparent #{$stop2r}) bottom left,
+      linear-gradient(45deg, transparent #{$stop1}, white #{$stop1r}) bottom left;
+    background-repeat: repeat-x;
+    background-size: ($triangle-size * 2) $triangle-size;
+    padding: $triangle-size 0;
+    filter: drop-shadow(0 2px 5px rgba(#000, 0.4));
+    min-width: 320px;
+    margin: 0 auto;
+    display: block;
+    }
+#listaRecibo {
+    background-color: #fff;
+    padding: 30px;
+}
+.containerElementosResumen{
+    border-bottom: 0.5px dashed #ccc;
+    line-height: 1;
+    overflow: hidden;
+  font-family: monospace;
+    font-size: 16px;
+}
+.containerElementosResumen:not(:first-child) {
+    margin-top: 1rem;
+}
+.botonAgregar, .botonRestar{
+    background-color: white;
+    border: white;
+}
+.containerCantidad{
+    display: flex;
+    margin: auto 15%;
+}
+.containerTextosBotonCarrito{
+    @extend .containerTextosBoton;
+    display: grid;
+    grid-template-rows: 50% 50%;
+    grid-template-areas: 
+    "containerTextos"
+    "containerBotones";
+}
+.containerBotonEliminar{
+    display: flex;
+}
+.containerBoton{
+    margin: auto auto;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+#infoicon{
+    margin-left: 5px
+}
+#infoicon:hover{
+    background: whitesmoke;
+
+}
+#info{
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    bottom: 0;
+    width: 400px;
+    background: #fff;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    border: 1px lightgrey solid;
+    transition: 0.5s;
+    transform: translateX(-30%) translateY(-50px);
+    z-index: 1;
+}
+#infoicon:hover ~ #info{
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(-30%) translateY(0px);
+}
