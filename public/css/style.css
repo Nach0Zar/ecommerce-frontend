@@ -502,7 +502,7 @@ h1 {
   margin-top: 1rem;
 }
 
-.botonAgregar, .botonRestar {
+.botonAgregar, .botonRestar{
   background-color: white;
   border: white;
 }
@@ -561,5 +561,12 @@ input::-webkit-inner-spin-button {
   opacity: 1;
   transform: translateX(-30%) translateY(0px);
 }
-
+.containerCantidadLanding{
+  display: flex;
+  margin: auto auto;
+}
+.containerCantidadBotones2 {
+  display: flex;
+  margin: 10px auto;
+}
 /*# sourceMappingURL=style.css.map */
