@@ -7,9 +7,7 @@ const ItemListContainer = () => {
         <div id="recomendadosContainer">
             <hr/>
             <h2>Recomendados</h2>
-            <div id="recomendados">
-                <ItemList/>
-            </div>
+              <ItemList/>
         </div>
         <br/>
         <hr/>

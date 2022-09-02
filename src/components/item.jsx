@@ -1,6 +1,5 @@
 import React from 'react';
 import ItemCount from './itemCount';
-import { Articulo } from './classes';
 
 const Item = (props) => {
     var articulo = props.articulo;

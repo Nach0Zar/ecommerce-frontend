@@ -8,10 +8,10 @@ const ItemCount = (props) => {
     <div className="containerCantidadLanding">
         <div className="containerCantidadBotones2">
             <div className="input-group w-auto align-items-center">
-                <input type="button" value="-" className="botonRestar" id="boton${id}" onClick={() => {(counterItem!=0) && (setCounterItem(counterItem-1))}}/>
+                <input type="button" value="-" className="botonRestar" id="boton{id}" onClick={() => {(counterItem!==0) && (setCounterItem(counterItem-1))}}/>
                 <div className="cantidadElemento">{counterItem}</div>
                 <input type="button" value="+" className="botonAgregar" id="boton{id}" onClick={() => {
-                                                                                                        if(counterItem!=props.stock){
+                                                                                                        if(counterItem!==props.stock){
                                                                                                             setCounterItem(counterItem+1);
                                                                                                         }
                                                                                                         else{
