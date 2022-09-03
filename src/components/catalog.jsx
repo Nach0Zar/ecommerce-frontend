@@ -1,9 +1,7 @@
 import React from 'react';
 import { useState, useEffect} from 'react';
-import { useParams } from 'react-router-dom';
-import categoriasJSON from '../json/categories.json';
 import articulosJSON from '../json/catalogo.json';
-import { Category, Articulo } from './classes';
+import { Articulo } from './classes';
 import ItemListed from './itemListed';
 import { Link } from 'react-router-dom';
 
@@ -33,7 +31,6 @@ const Catalog = () => {
         });
       }, []);
   
-    console.log(items);
     return (
       <main>
         <div id="catalogo">
