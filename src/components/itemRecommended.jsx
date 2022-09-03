@@ -5,7 +5,7 @@ const ItemRecommended = (props) => {
     var articulo = props.articulo;
     return (
         <div className="itemDiv itemRecomendado">
-            <a href="/" id="noDecoration" >
+            <a href="/" className="noDecoration" >
                 <img src= {articulo.imgSrc} alt=""/>
             </a>
             <hr/>

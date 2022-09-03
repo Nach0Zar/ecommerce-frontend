@@ -1,16 +1,20 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
-import Header from './header';
 import categoriasJSON from '../json/categories.json';
 import articulosJSON from '../json/catalogo.json';
 import { Category, Articulo } from './classes';
-import ItemRecommended from './itemRecommended';
+import ItemListed from './itemListed';
+import { Link } from 'react-router-dom';
+
 
 const CategoryItems = () => {
 const [itemsCategory, setItemsCategory] = useState([]);
 var {categoryId} = useParams();
 (categoryId===undefined) && (categoryId = -1);
+
+
+useEffect(() => {
 
     const getCategory = async () => {
       // por si decido utilizar API de ML para items y categorias
@@ -63,20 +67,54 @@ var {categoryId} = useParams();
     }).catch((data)=>{
       data.then((result)=>setItemsCategory(result))
       });
-  
+    }, []);
+
   console.log(itemsCategory);
   return (
-    <div className="CategoryHome">
-      <Header/>
-      <div id="recomendadosContainer">
-        <div id="recomendados">
-        { itemsCategory.map((item) => (
-              <ItemRecommended key={item.id} articulo={item}/>
+    <main>
+      <div id="catalogo">
+          <div id="barraLateral">
+              <div className="categoria">
+                  <span>Descuentos</span>
+                  <div className="subCategoria"><span>5% OFF</span></div>
+                  <div className="subCategoria"><span>10% OFF</span></div>
+                  <div className="subCategoria"><span>15% OFF</span></div>
+              </div>
+              <br/>
+              <div className="categoria">
+                  <span>Ubicacion</span>
+                  <div className="subCategoria"><span>Argentina</span></div>
+                  <div className="subCategoria"><span>Brasil</span></div>
+                  <div className="subCategoria"><span>Chile</span></div>
+                  <div className="subCategoria"><span>Colombia</span></div>
+              </div>
+              <br/>
+              <div className="categoria">
+                  <span>Condicion</span>
+                  <div className="subCategoria"><span>Nuevo</span></div>
+                  <div className="subCategoria"><span>Usado</span></div>
+              </div>
+              <br/>
+              <div className="categoria">
+                  <span>Tipo</span>
+                  <div className="subCategoria"><span><Link className="noDecoration" to="/CoderhouseReact/category/0">Cosmeticos</Link></span></div>
+                  <div className="subCategoria"><span><Link className="noDecoration" to="/CoderhouseReact/category/1">Electrónica</Link></span></div>
+                  <div className="subCategoria"><span><Link className="noDecoration" to="/CoderhouseReact/category/2">Alimentos</Link></span></div>
+                  <div className="subCategoria"><span><Link className="noDecoration" to="/CoderhouseReact/category/3">Escolares</Link></span></div>
+                  <div className="subCategoria"><span><Link className="noDecoration" to="/CoderhouseReact/category/4">Domestico</Link></span></div>
+              </div>
+          </div>
+          <div id="listaDeObjetos">
+          { itemsCategory.map((item) => (
+              <div>
+                <ItemListed key={item.id} articulo={item}/>
+                <br/>
+              </div>
           ))
           }
-        </div>
+          </div>
       </div>
-    </div>
+    </main>
   )
 }
 

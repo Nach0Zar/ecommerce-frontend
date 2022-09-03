@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import Carrito from './cartWidget';
 
 const NavBar = () => {
@@ -13,7 +13,7 @@ const NavBar = () => {
         <div className="collapse navbar-collapse bg-dark" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item navLink"><NavLink className="nav-link text-white" to={"/CoderhouseReact/"}>Inicio</NavLink></li>
-            <li className="nav-item navLink"><NavLink className="nav-link text-white" to={"/CoderhouseReact/"}>Mercado</NavLink></li>
+            <li className="nav-item navLink"><NavLink className="nav-link text-white" to={"/CoderhouseReact/catalog/"}>Mercado</NavLink></li>
             <li className="nav-item navLink"><NavLink className="nav-link text-white" to={"/CoderhouseReact/"}>FAQs</NavLink></li>
             <li className="nav-item navLink"><NavLink className="nav-link text-white" to={"/CoderhouseReact/"}>Loguearse</NavLink></li>
             <li className="nav-item navLink"><NavLink className="nav-link text-white" to={"/CoderhouseReact/"}>Registrarse</NavLink></li>

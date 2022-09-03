@@ -570,8 +570,9 @@ input::-webkit-inner-spin-button {
   margin: 10px auto;
 }
 
-#noDecoration{
+.noDecoration,.noDecoration:hover{
   text-decoration: none;
   color: black;
+  font-size: inherit;
 }
 /*# sourceMappingURL=style.css.map */
