@@ -1,13 +1,13 @@
 import React from 'react';
-import ItemList from './itemList';
+import ItemListRecommended from './itemListRecommended';
 
-const ItemListContainer = () => { 
+const ItemListContainerRecommended = () => { 
   return (
     <div>
         <div id="recomendadosContainer">
             <hr/>
             <h2>Recomendados</h2>
-              <ItemList/>
+              <ItemListRecommended/>
         </div>
         <br/>
         <hr/>
@@ -15,4 +15,4 @@ const ItemListContainer = () => {
   )
 }
 
-export default ItemListContainer
+export default ItemListContainerRecommended

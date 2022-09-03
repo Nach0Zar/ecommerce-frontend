@@ -1,11 +1,13 @@
 import React from 'react';
 import ItemCount from './itemCount';
 
-const Item = (props) => {
+const ItemRecommended = (props) => {
     var articulo = props.articulo;
     return (
         <div className="itemDiv itemRecomendado">
-            <img src= {articulo.imgSrc} alt=""/>
+            <a href="/" id="noDecoration" >
+                <img src= {articulo.imgSrc} alt=""/>
+            </a>
             <hr/>
             <span>${articulo.precio}</span>
             <ItemCount stock = {Math.floor(Math.random() * 100) + 1} cantidad = {1}/>
@@ -13,4 +15,4 @@ const Item = (props) => {
     )
 }
 
-export default Item
+export default ItemRecommended

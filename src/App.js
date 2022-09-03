@@ -1,28 +1,27 @@
-import './App.css';
 import NavBar from './components/navBar';
-import ItemListContainer from './components/itemListContainer';
 import Footer from './components/footer';
-import Slider from './components/slider';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from './components/home';
+import Catalog from './components/catalog';
+import ItemPage from './components/itemPage';
+import CategoryItems from './components/category';
+import Cart from './components/cart';
 
 function App() {
   return (
-    <div className="App">
-      <header id="headerIndex">
-        <NavBar/>
-        <div id="containerTitulos">
-                  <h1>Zona Compra E-Commerce</h1>
-                  <h2>E-Commerce dedicado a sudamerica</h2>
-                  <label htmlFor="busqueda">
-                      <input type="search" id="busqueda" placeholder="Buscar elementos en el catalogo"/>
-                      <button type="button" className="btn btn-outline-dark">Buscar</button>
-                  </label>
-              </div>
-          <hr/>
-        </header>
-        <Slider/>
-        <ItemListContainer/>
-        <Footer/>
-    </div>
+    <BrowserRouter>
+    <NavBar/>
+    <Routes>
+      <Route exact path="/" element={ <Home />} />
+      <Route exact path="/CoderhouseReact/" element={ <Home />} />
+      <Route exact path="/CoderhouseReact/catalog" element={ <Catalog />} />
+      <Route path="/CoderhouseReact/itemPage/:itemId" element={ <ItemPage />} />
+      <Route path="/CoderhouseReact/category/" element={ <CategoryItems />}/>
+      <Route path="/CoderhouseReact/category/:categoryId" element={ <CategoryItems />}/>
+      <Route exact path="/CoderhouseReact/cart" element={ <Cart />}/>
+    </Routes>
+    <Footer/>
+  </BrowserRouter>
   );
 }
 

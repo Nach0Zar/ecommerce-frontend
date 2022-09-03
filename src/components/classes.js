@@ -1,6 +1,6 @@
 export class Articulo{
     static idCounter = 0;
-    constructor(nombreArticulo, descripcion, precio, imgSrc, cantidad, id){
+    constructor(nombreArticulo, descripcion, precio, imgSrc, categorias,cantidad, id){
         if (id === 0){ 
             this.id = Articulo.getIdCounter();
             Articulo.idCounter++
@@ -14,8 +14,50 @@ export class Articulo{
         this.imgSrc = imgSrc;
         this.cantidad = cantidad;
         this.agregado = false;
+        this.categorias = categorias;
     }
     static getIdCounter(){
         return Articulo.idCounter;
     }
 }
+export class Category{
+    static idCounter = 0;
+    constructor(idCategoria, nombreCategoria){
+        if (idCategoria === 0){ 
+            this.idCategoria = Category.getIdCounter();
+            Category.idCounter++
+        } 
+        else {
+            this.idCategoria = idCategoria;
+        }
+        this.nombreCategoria = nombreCategoria;
+    }
+    static getIdCounter(){
+        return Category.idCounter;
+    }
+}
+// export class Categories{
+//     static categories = [];
+//     constructor(){
+//         console.log("entrada "+Categories.categories)
+//         Categories.createCategories();
+//         console.log("salida "+Categories.categories);
+//         Categories.categories.forEach((category)=>console.log(category));
+//     }
+//     static getCategories = async () => {
+//         const URL = "https://api.mercadolibre.com/sites/MLA/categories";
+//         return await fetch(URL).then((response)=>response.json());
+//     }
+//     static createCategories(){
+//         if (Categories.categories === []){
+//             console.log("entro")
+//             const promise = new Promise((resolve) => {
+//                 resolve(Categories.getCategories());
+//             })
+//             promise.then((data)=> Categories.categories=(data)).catch((err)=>console.log(err));
+//             for (var category in Categories.categories){
+//                 Categories.categories.push(category);
+//             }
+//         }
+//     }
+// }

@@ -1,9 +1,10 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import carritoImg from '../images/carrito.svg'
 
 const Carrito = () => {
   return (
-    <a className="nav-link text-white" href="index.html"><img id="carrito" src={carritoImg} alt=""/></a>
+    <Link className="nav-link text-white" to={"/CoderhouseReact/cart"}><img id="carrito" src={carritoImg} alt=""/></Link>
   )
 }
 
