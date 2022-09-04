@@ -20,18 +20,24 @@ useEffect(() => {
       // por si decido utilizar API de ML para items y categorias
       // const URL = "https://api.mercadolibre.com/categories/MLA86379"/*+categoryId*/;
       // return await fetch(categoriasJSON).then((response)=>response.json());
-      var categoriaSeleccionada;
+      var categoriasSeleccionada = [];
       categoriasJSON.forEach((categoria)=>{
-        (categoryId === categoria.idCategoria) && (categoriaSeleccionada = new Category(categoria.idCategoria, categoria.nombreCategoria))
+        console.log(parseInt(typeof(categoryId)))
+        if (parseInt(categoryId) === categoria.idCategoria) {
+          categoriasSeleccionada.push(new Category(categoria.idCategoria, categoria.nombreCategoria))
+          }
       })
-      return categoriaSeleccionada;
+      return categoriasSeleccionada;
   }
   const crearArticulosByCategory = async (categoria) => {
     var articulosLista = [];
+    console.log(categoria);
+    console.log(typeof(categoria[0].idCategoria))
     articulosJSON.forEach((articulo)=>{
-      if(articulo.categorias.includes(categoria.idCategoria)){
-        let {nombreArticulo, descripcion ,precio, imgSrc, categorias} = articulo;
-        const articuloObjeto = new Articulo (nombreArticulo, descripcion, precio, imgSrc, categorias, 0, 0)
+      console.log(articulo.categorias +" includes " + categoria[0].idCategoria + " == " + articulo.categorias.includes(categoria[0].idCategoria))
+      if(articulo.categorias.includes(categoria[0].idCategoria)){
+        let {id, nombreArticulo, descripcion ,precio, imgSrc, categorias} = articulo;
+        const articuloObjeto = new Articulo (nombreArticulo, descripcion, precio, imgSrc, categorias, 0, id)
         articulosLista.push(articuloObjeto);
       }
     })
@@ -40,8 +46,8 @@ useEffect(() => {
   const crearTodosLosArticulos = async () => {
     var articulosLista = [];
     articulosJSON.forEach((articulo)=>{
-      let {nombreArticulo, descripcion ,precio, imgSrc, categorias} = articulo;
-      const articuloObjeto = new Articulo (nombreArticulo, descripcion, precio, imgSrc, categorias, 0, 0)
+      let {id, nombreArticulo, descripcion ,precio, imgSrc, categorias} = articulo;
+      const articuloObjeto = new Articulo (nombreArticulo, descripcion, precio, imgSrc, categorias, 0, id)
       articulosLista.push(articuloObjeto);
     })
     return articulosLista;

@@ -12,8 +12,8 @@ const ItemListRecommended = () => {
         var articulosListaRecomendados = [];
         for(var index = 0; index<4; index++ ){
             var articulo = articulosJSON[index];
-            let {nombreArticulo, descripcion ,precio, imgSrc, categorias} = articulo;
-            const articuloObjeto = new Articulo (nombreArticulo, descripcion, precio, imgSrc, categorias, 0, 0)
+            let {id, nombreArticulo, descripcion ,precio, imgSrc, categorias} = articulo;
+            const articuloObjeto = new Articulo (nombreArticulo, descripcion, precio, imgSrc, categorias, 0 , id)
             articulosListaRecomendados.push(articuloObjeto);
         }
         return articulosListaRecomendados;

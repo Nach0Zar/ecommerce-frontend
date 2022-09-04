@@ -1,13 +1,15 @@
 import React from 'react';
 import ItemCount from './itemCount';
+import { Link } from 'react-router-dom';
 
 const ItemRecommended = (props) => {
     var articulo = props.articulo;
+    const URLPage = "/CoderhouseReact/ItemPage/"+articulo.id;
     return (
         <div className="itemDiv itemRecomendado">
-            <a href="/" className="noDecoration" >
+            <Link to={URLPage} className="noDecoration" >
                 <img src= {articulo.imgSrc} alt=""/>
-            </a>
+            </Link>
             <hr/>
             <span>${articulo.precio}</span>
             <ItemCount stock = {Math.floor(Math.random() * 100) + 1} cantidad = {1}/>

@@ -1,22 +1,22 @@
 [
     {
-        "idCategoria": "0",
+        "idCategoria": 0,
         "nombreCategoria": "Cosmeticos"
     },
     {
-        "idCategoria": "1",
+        "idCategoria": 1,
         "nombreCategoria": "Electronica"
     },
     {
-        "idCategoria": "2",
+        "idCategoria": 2,
         "nombreCategoria": "Alimentos"
     },
     {
-        "idCategoria": "3",
+        "idCategoria": 3,
         "nombreCategoria": "Escolares"
     },
     {
-        "idCategoria": "4",
+        "idCategoria": 4,
         "nombreCategoria": "Domestico"
     }
 ]

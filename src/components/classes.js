@@ -1,7 +1,7 @@
 export class Articulo{
     static idCounter = 0;
     constructor(nombreArticulo, descripcion, precio, imgSrc, categorias,cantidad, id){
-        if (id === 0){ 
+        if (id === -1){ 
             this.id = Articulo.getIdCounter();
             Articulo.idCounter++
         } 
@@ -23,7 +23,7 @@ export class Articulo{
 export class Category{
     static idCounter = 0;
     constructor(idCategoria, nombreCategoria){
-        if (idCategoria === 0){ 
+        if (idCategoria === -1){ 
             this.idCategoria = Category.getIdCounter();
             Category.idCounter++
         } 

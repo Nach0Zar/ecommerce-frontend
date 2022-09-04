@@ -14,8 +14,8 @@ const Catalog = () => {
     const crearTodosLosArticulos = async () => {
       var articulosLista = [];
       articulosJSON.forEach((articulo)=>{
-        let {nombreArticulo, descripcion ,precio, imgSrc, categorias} = articulo;
-        const articuloObjeto = new Articulo (nombreArticulo, descripcion, precio, imgSrc, categorias, 0, 0)
+        let {id, nombreArticulo, descripcion ,precio, imgSrc, categorias} = articulo;
+        const articuloObjeto = new Articulo (nombreArticulo, descripcion, precio, imgSrc, categorias, 0, id)
         articulosLista.push(articuloObjeto);
       })
       return articulosLista;
