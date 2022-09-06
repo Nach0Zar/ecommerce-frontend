@@ -1,8 +1,8 @@
 import React from 'react';
 import { useState, useEffect} from 'react';
-import articulosJSON from '../json/catalogo.json';
-import { Articulo } from './classes';
-import ItemListed from './itemListed';
+import articulosJSON from '../../json/catalogo.json';
+import { Articulo } from '../imports/classes';
+import ItemListed from '../listing/itemListed';
 import { Link } from 'react-router-dom';
 
 const Catalog = () => {

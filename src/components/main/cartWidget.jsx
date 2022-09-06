@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import carritoImg from '../images/carrito.svg'
+import carritoImg from '../../images/carrito.svg'
 
 const Carrito = () => {
   return (

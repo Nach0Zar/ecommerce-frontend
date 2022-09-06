@@ -1,11 +1,11 @@
-import Footer from './components/footer';
+import Footer from './components/main/footer';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from './components/home';
-import Catalog from './components/catalog';
-import ItemPage from './components/itemPage';
-import CategoryItems from './components/category';
-import Cart from './components/cart';
-import Header from './components/header';
+import Home from './components/home/home';
+import Catalog from './components/catalog/catalog';
+import ItemPage from './components/itemPage/itemPage';
+import CategoryItems from './components/category/category';
+import Cart from './components/cart/cart';
+import Header from './components/main/header';
 
 function App() {
   return (

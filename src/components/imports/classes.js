@@ -19,13 +19,16 @@ export class Articulo{
     static getIdCounter(){
         return Articulo.idCounter;
     }
+    cambiarEstado() {
+        this.agregado = !this.agregado;
+    }
 }
-export class Category{
+export class Categoria{
     static idCounter = 0;
     constructor(idCategoria, nombreCategoria){
         if (idCategoria === -1){ 
-            this.idCategoria = Category.getIdCounter();
-            Category.idCounter++
+            this.idCategoria = Categoria.getIdCounter();
+            Categoria.idCounter++
         } 
         else {
             this.idCategoria = idCategoria;
@@ -33,7 +36,7 @@ export class Category{
         this.nombreCategoria = nombreCategoria;
     }
     static getIdCounter(){
-        return Category.idCounter;
+        return Categoria.idCounter;
     }
 }
 // export class Categories{

@@ -1,11 +1,9 @@
 import React from 'react';
 import { useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
-import categoriasJSON from '../json/categories.json';
-import articulosJSON from '../json/catalogo.json';
-import { Category, Articulo } from './classes';
-import ItemListed from './itemListed';
+import ItemListed from '../listing/itemListed';
 import { Link } from 'react-router-dom';
+import { obtenerCategoriaPorID, obtenerItemsPorCategoria, obtenerArticulos } from '../imports/functions';
 
 
 const CategoryItems = () => {
@@ -16,56 +14,20 @@ var {categoryId} = useParams();
 
 useEffect(() => {
   
-    const getCategory = async () => {
-      // por si decido utilizar API de ML para items y categorias
-      // const URL = "https://api.mercadolibre.com/categories/MLA86379"/*+categoryId*/;
-      // return await fetch(categoriasJSON).then((response)=>response.json());
-      var categoriasSeleccionada = [];
-      categoriasJSON.forEach((categoria)=>{
-        console.log(parseInt(typeof(categoryId)))
-        if (parseInt(categoryId) === categoria.idCategoria) {
-          categoriasSeleccionada.push(new Category(categoria.idCategoria, categoria.nombreCategoria))
-          }
-      })
-      return categoriasSeleccionada;
-  }
-  const crearArticulosByCategory = async (categoria) => {
-    var articulosLista = [];
-    console.log(categoria);
-    console.log(typeof(categoria[0].idCategoria))
-    articulosJSON.forEach((articulo)=>{
-      console.log(articulo.categorias +" includes " + categoria[0].idCategoria + " == " + articulo.categorias.includes(categoria[0].idCategoria))
-      if(articulo.categorias.includes(categoria[0].idCategoria)){
-        let {id, nombreArticulo, descripcion ,precio, imgSrc, categorias} = articulo;
-        const articuloObjeto = new Articulo (nombreArticulo, descripcion, precio, imgSrc, categorias, 0, id)
-        articulosLista.push(articuloObjeto);
-      }
-    })
-    return articulosLista;
-  }
-  const crearTodosLosArticulos = async () => {
-    var articulosLista = [];
-    articulosJSON.forEach((articulo)=>{
-      let {id, nombreArticulo, descripcion ,precio, imgSrc, categorias} = articulo;
-      const articuloObjeto = new Articulo (nombreArticulo, descripcion, precio, imgSrc, categorias, 0, id)
-      articulosLista.push(articuloObjeto);
-    })
-    return articulosLista;
-  }
     const getCategoryByID = new Promise((resolve,reject) => {
 
       if(categoryId>-1){
-        resolve(getCategory());
+        resolve(obtenerCategoriaPorID(categoryId));
       }
       else{
-        reject(crearTodosLosArticulos())
+        reject(obtenerArticulos())
       }
       
     })
 
     getCategoryByID.then((data)=> {
       const getItemsByCategoryID = new Promise((resolve) => {
-        resolve(crearArticulosByCategory(data));
+        resolve(obtenerItemsPorCategoria(data));
       });
       getItemsByCategoryID.then((data)=> {setItemsCategory(data)})
       .catch((err)=>console.log(err));
@@ -73,7 +35,7 @@ useEffect(() => {
     }).catch((data)=>{
       data.then((result)=>setItemsCategory(result))
       });
-    }, []);
+    }, [categoryId]);
 
   return (
     <main>
