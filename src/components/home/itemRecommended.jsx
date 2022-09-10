@@ -12,7 +12,7 @@ const ItemRecommended = (props) => {
             </Link>
             <hr/>
             <span>${articulo.precio}</span>
-            <ItemCount stock = {Math.floor(Math.random() * 100) + 1} cantidad = {1}/>
+            <ItemCount stock = {articulo.stock} cantidad = {articulo.cantidad}/>
         </div>
     )
 }

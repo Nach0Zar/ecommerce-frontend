@@ -155,7 +155,7 @@ h1 {
   max-width: 440px;
   min-width: 420px;
   width: 440px;
-  height: 500px;
+  height: 550px;
   border-radius: 5%;
 }
 #recomendadosContainer #recomendados .itemRecomendado {
@@ -519,7 +519,9 @@ h1 {
   display: flex;
   margin: auto 15%;
 }
-
+.cantidadElemento{
+  padding-right: 0.25px;
+}
 .containerTextosBotonCarrito {
   display: grid;
   grid-template-rows: 50% 50%;

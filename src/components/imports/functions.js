@@ -2,6 +2,12 @@ import { Articulo, Categoria } from "./classes";
 import categoriasJSON from '../../json/categories.json';
 import articulosJSON from '../../json/catalogo.json';
 
+function crearArticulo(articulo){
+  let {id, nombreArticulo, descripcion ,precio, imgSrc, categorias, stock} = articulo;
+  const articuloObjeto = new Articulo (id, nombreArticulo, descripcion, precio, imgSrc, categorias, 1, stock)
+  return articuloObjeto
+}
+
 export const obtenerCategoriasPorArticulo = async (articulo) => {
     var categoriasSeleccionadas = [];
     categoriasJSON.forEach((categoria)=>{
@@ -14,7 +20,7 @@ export const obtenerItemPorID = async (itemId) => {
   var itemSeleccionado;
   articulosJSON.forEach((articulo)=>{
     if(parseInt(itemId) === articulo.id){
-      (itemSeleccionado = new Articulo(articulo.nombreArticulo, articulo.descripcion, articulo.precio, articulo.imgSrc, articulo.categorias, 0 , articulo.id))
+      (itemSeleccionado = crearArticulo(articulo))
     }
   })
   return itemSeleccionado;
@@ -37,8 +43,7 @@ export const obtenerItemsPorCategoria = async (categoria) => {
   var articulosLista = [];
   articulosJSON.forEach((articulo)=>{
     if(articulo.categorias.includes(categoria[0].idCategoria)){
-      let {id, nombreArticulo, descripcion ,precio, imgSrc, categorias} = articulo;
-      const articuloObjeto = new Articulo (nombreArticulo, descripcion, precio, imgSrc, categorias, 0, id)
+      const articuloObjeto = crearArticulo(articulo);
       articulosLista.push(articuloObjeto);
     }
   })
@@ -48,8 +53,7 @@ export const obtenerItemsPorCategoria = async (categoria) => {
 const obtenerTodosLosArticulos = async () => {
   var articulosLista = [];
   articulosJSON.forEach((articulo)=>{
-    let {id, nombreArticulo, descripcion ,precio, imgSrc, categorias} = articulo;
-    const articuloObjeto = new Articulo (nombreArticulo, descripcion, precio, imgSrc, categorias, 0, id)
+    const articuloObjeto = crearArticulo(articulo);
     articulosLista.push(articuloObjeto);
   })
   return articulosLista;
@@ -65,8 +69,7 @@ export const obtenerArticulos = async (cantidad = 0) => {
   else{
     for(var index = 0; index<cantidad; index++ ){
     var articulo = articulosJSON[index];
-    let {id, nombreArticulo, descripcion ,precio, imgSrc, categorias} = articulo;
-    const articuloObjeto = new Articulo (nombreArticulo, descripcion, precio, imgSrc, categorias, 0 , id)
+    const articuloObjeto = crearArticulo(articulo)
     articulosListaRecomendados.push(articuloObjeto);
   }
 

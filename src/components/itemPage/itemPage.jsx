@@ -11,12 +11,21 @@ const [texto, setTexto] = useState("");
 const [estilo, setEstilo] = useState("");
 const idStlye = "boton"+itemId;
 useEffect(() => {
+
   const getItemByID = new Promise((resolve) => {
       resolve(obtenerItemPorID(itemId));
   })
 
   getItemByID.then((data)=> {
     setArticuloCapturado(data);
+    if(data.agregado === false){
+      setTexto("Agregar Articulo");
+      setEstilo("btn btn-outline-dark botonAgregarCarrito");
+    }
+    else {
+      setTexto("Articulo Añadido");
+      setEstilo("btn btn-dark botonAgregarCarrito");
+    }
     
     const getCategoryByID = new Promise((resolve) => {
       resolve(obtenerCategoriasPorArticulo(data));
@@ -24,18 +33,31 @@ useEffect(() => {
     getCategoryByID.then((data)=> {setCategoriasItem(data)})
     
     .catch((err)=>console.log(err));
-    actualizarBoton();
+      
   }).catch((err)=>{
     alert("Item no encontrado. " + err)
     });
   
-  }, []);
+  }, [itemId]);
   
 useEffect(() => {
+  const actualizarBoton = () => {
+    if(articuloCapturado.agregado === false){
+      setTexto("Agregar Articulo");
+      setEstilo("btn btn-outline-dark botonAgregarCarrito");
+    }
+    else {
+      setTexto("Articulo Añadido");
+      setEstilo("btn btn-dark botonAgregarCarrito");
+    }
+  }
   actualizarBoton();
 },[texto, articuloCapturado])
   
-const actualizarBoton = () => {
+
+const cambiarEstadoArticuloEnCarrito = (event) => {
+  event.preventDefault();
+  articuloCapturado.cambiarEstado();
   if(articuloCapturado.agregado === false){
     setTexto("Agregar Articulo");
     setEstilo("btn btn-outline-dark botonAgregarCarrito");
@@ -45,11 +67,7 @@ const actualizarBoton = () => {
     setEstilo("btn btn-dark botonAgregarCarrito");
   }
 }
-const cambiarEstadoArticuloEnCarrito = (event) => {
-  event.preventDefault();
-  articuloCapturado.cambiarEstado();
-  actualizarBoton();
-}
+
 
   return (
     <main>

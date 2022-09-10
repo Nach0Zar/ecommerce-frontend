@@ -1,20 +1,21 @@
 export class Articulo{
     static idCounter = 0;
-    constructor(nombreArticulo, descripcion, precio, imgSrc, categorias,cantidad, id){
+    constructor(id, nombreArticulo, descripcion, precio, imgSrc, categorias, cantidad, stock){
         if (id === -1){ 
             this.id = Articulo.getIdCounter();
-            Articulo.idCounter++
         } 
         else {
             this.id = id;
         }
+        Articulo.idCounter++;
         this.nombreArticulo = nombreArticulo;
         this.descripcion = descripcion;
         this.precio = parseInt(precio);
         this.imgSrc = imgSrc;
         this.cantidad = cantidad;
-        this.agregado = false;
+        this.agregado = true;
         this.categorias = categorias;
+        this.stock = stock;
     }
     static getIdCounter(){
         return Articulo.idCounter;
