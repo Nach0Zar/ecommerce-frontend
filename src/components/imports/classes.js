@@ -13,7 +13,6 @@ export class Articulo{
         this.precio = parseInt(precio);
         this.imgSrc = imgSrc;
         this.cantidad = cantidad;
-        this.agregado = true;
         this.categorias = categorias;
         this.stock = stock;
     }
@@ -23,6 +22,7 @@ export class Articulo{
     cambiarEstado() {
         this.agregado = !this.agregado;
     }
+
 }
 export class Categoria{
     static idCounter = 0;

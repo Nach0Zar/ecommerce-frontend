@@ -12,7 +12,7 @@ const ItemRecommended = (props) => {
             </Link>
             <hr/>
             <span>${articulo.precio}</span>
-            <ItemCount stock = {articulo.stock} cantidad = {articulo.cantidad}/>
+            <ItemCount id={articulo.id} stock = {articulo.stock} cantidad = {articulo.cantidad}/>
         </div>
     )
 }

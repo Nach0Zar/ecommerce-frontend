@@ -4,7 +4,7 @@ import articulosJSON from '../../json/catalogo.json';
 
 function crearArticulo(articulo){
   let {id, nombreArticulo, descripcion ,precio, imgSrc, categorias, stock} = articulo;
-  const articuloObjeto = new Articulo (id, nombreArticulo, descripcion, precio, imgSrc, categorias, 1, stock)
+  const articuloObjeto = new Articulo (id, nombreArticulo, descripcion, precio, imgSrc, categorias, 0, stock)
   return articuloObjeto
 }
 

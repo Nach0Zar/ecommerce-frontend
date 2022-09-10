@@ -6,21 +6,24 @@ import ItemPage from './components/itemPage/itemPage';
 import CategoryItems from './components/category/category';
 import Cart from './components/cart/cart';
 import Header from './components/main/header';
+import { CartProvider } from './components/cart/cartContext';
 
 function App() {
   return (
     <BrowserRouter>
-    <Header/>
-    <Routes>
-      <Route exact path="/" element={ <Home />} />
-      <Route exact path="/CoderhouseReact/" element={ <Home />} />
-      <Route exact path="/CoderhouseReact/catalog" element={ <Catalog />} />
-      <Route path="/CoderhouseReact/itemPage/:itemId" element={ <ItemPage />} />
-      <Route path="/CoderhouseReact/category" element={ <CategoryItems />}/>
-      <Route path="/CoderhouseReact/category/:categoryId" element={ <CategoryItems />}/>
-      <Route exact path="/CoderhouseReact/cart" element={ <Cart />}/>
-    </Routes>
-    <Footer/>
+    <CartProvider>
+      <Header/>
+      <Routes>
+        <Route exact path="/" element={ <Home />} />
+        <Route exact path="/CoderhouseReact/" element={ <Home />} />
+        <Route exact path="/CoderhouseReact/catalog" element={ <Catalog />} />
+        <Route path="/CoderhouseReact/itemPage/:itemId" element={ <ItemPage />} />
+        <Route path="/CoderhouseReact/category" element={ <CategoryItems />}/>
+        <Route path="/CoderhouseReact/category/:categoryId" element={ <CategoryItems />}/>
+        <Route exact path="/CoderhouseReact/cart" element={ <Cart />}/>
+      </Routes>
+      <Footer/>
+    </CartProvider>
   </BrowserRouter>
   );
 }

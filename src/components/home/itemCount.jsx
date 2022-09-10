@@ -1,24 +1,21 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useCart } from '../cart/cartContext';
 
 
 const ItemCount = (props) => {
-    const [counterItem, setCounterItem] = useState(props.cantidad);
-    const handleAddItemOnClick = () => {
-      (counterItem!==props.stock) ? setCounterItem(counterItem+1) : alert("No quedan unidades en stock disponible")
-    }
+  const itemId = props.id;
+  const [counterItem, setCounterItem] = useState(1);
+  const { addItem, removeItem} = useCart();
+  const handleAddItemOnClick = () => {
+    (counterItem!==props.stock) ? setCounterItem(counterItem+1) : alert("No quedan unidades en stock disponible")
+  }
 
     const handleSubstractItemOnClick = () => {
-      (counterItem!==0) && (setCounterItem(counterItem-1));
+      (counterItem>1) && (setCounterItem(counterItem-1));
     }
     const addToCartHandler = () => {
-      if(!counterItem){
-        console.log("tu item es 0");
-      }
-      else{
-        console.log("agregaste " + counterItem);
-
-      }
+      addItem(itemId,counterItem);
     }
 
   return (
@@ -35,7 +32,7 @@ const ItemCount = (props) => {
       <div className="containerCantidadLanding">
         <div className="containerCantidadBotones2">
           <div className="input-group w-auto align-items-center">
-            <button type="button" className="btn btn-outline-dark" onClick={addToCartHandler}>Agregar al carrito</button>
+              <button type="button" className="btn btn-outline-dark" onClick={addToCartHandler}>Agregar al carrito</button>
           </div>
         </div>
       </div>

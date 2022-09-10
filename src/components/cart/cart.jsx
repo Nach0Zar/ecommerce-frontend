@@ -1,10 +1,10 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { obtenerArticulos } from '../imports/functions';
 import ModalConfirmarCompra from './modalConfirmarCompra';
+import { useCart } from './cartContext';
 
 const Cart = () => {
-  const [articulosAgregados, setArticulosAgregados] = useState([]);
+  const { articulos} = useCart();
   const [costoSubTotal, setCostoSubTotal] = useState(0);
   const [precioServicio, setPrecioServicio] = useState(0);
   const [costoTotal, setCostoTotal] = useState(0);
@@ -12,36 +12,19 @@ const Cart = () => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  
-  useEffect(() => {
 
-    const obtenerArticulosAgregados = new Promise((resolve) => {
-        resolve(obtenerArticulos())
-    })
-
-    obtenerArticulosAgregados.then((data)=>{
-      let listadoArticulosAgregados = [];
-      let subTotal = 0;
-      data.forEach(articulo => {
-      if(articulo.agregado){
-        listadoArticulosAgregados.push(articulo);
-        subTotal = subTotal + articulo.precio*articulo.cantidad;
-        }
-      }
-      );
-      setArticulosAgregados(listadoArticulosAgregados);
-      setCostoSubTotal(subTotal);
-    }).catch((err)=>console.log(err));
-}, []);
-
-    useEffect(()=>{
-      setPrecioServicio(750*articulosAgregados.length);
-      (articulosAgregados.length > 0) ? setEstilo("btn btn-outline-dark") : setEstilo("btn btn-secondary disabled");
-    }, [articulosAgregados]);
-    useEffect(()=>{
-      setCostoTotal(precioServicio+costoSubTotal)
-    },[precioServicio,costoSubTotal])
-
+    useEffect(() => {
+      (articulos.length > 0) ? setEstilo("btn btn-outline-dark") : setEstilo("btn btn-secondary disabled");
+      let precioServicioCarrito = 750*articulos.length;
+      setPrecioServicio(precioServicioCarrito);
+      let subTotalCarrito = 0;
+      articulos.forEach((item)=>{
+        subTotalCarrito += item.precio;
+      })
+      setCostoSubTotal(subTotalCarrito);
+      setCostoTotal(subTotalCarrito+precioServicioCarrito);
+  }, []);
+    
   return (
     <div id="listado">
       <div id="listaCarrito">
@@ -50,8 +33,8 @@ const Cart = () => {
           <div id="resumenCarrito">
               <div id="listaRecibo">
                 {
-                  articulosAgregados.length > 0 ?
-                  articulosAgregados.map((articulo)=>(
+                  articulos.length > 0 ?
+                  articulos.map((articulo)=>(
                     <div className='containerElementosResumen' key={articulo.id}>
                       <div className='nombreElementoTicket'>{articulo.nombreArticulo}</div>
                       <div className='precioMultiplicador'>
