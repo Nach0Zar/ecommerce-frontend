@@ -411,6 +411,8 @@ h1 {
 
 #listaCarrito {
   margin: auto;
+  max-width: 750px;
+  min-width: 700px;
 }
 
 .botonEliminar {
@@ -444,7 +446,7 @@ h1 {
     margin: 5px auto;
   }
 }
-@media screen and (max-width: 1100px) {
+@media screen and (max-width: 1300px) {
   #listado {
     flex-flow: column wrap;
     justify-content: space-around;
@@ -453,6 +455,7 @@ h1 {
   .elementoCarrito, #containerBotonCompra {
     max-width: 750px;
     min-width: 750px;
+    width: 750px;
   }
 
   .containerCantidadBotones {

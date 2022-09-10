@@ -73,8 +73,8 @@ useEffect(() => {
           </div>
           <div id="listaDeObjetos">
           { itemsCategory.map((item) => (
-              <div>
-                <ItemListed key={item.id} articulo={item}/>
+              <div key={item.id}>
+                <ItemListed articulo={item}/>
                 <br/>
               </div>
           ))

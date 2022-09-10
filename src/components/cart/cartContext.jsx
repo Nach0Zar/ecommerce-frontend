@@ -1,5 +1,5 @@
 import React from 'react';
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { obtenerItemPorID } from '../imports/functions';
 
 const CartContext = React.createContext([]);
@@ -10,6 +10,16 @@ const CartContext = React.createContext([]);
 
   const CartProvider = ({defaultValue = [], children}) => {
     const [articulos, setArticulos] = useState(defaultValue);
+    const [changes, setChanges] = useState(0);
+    const [costoSubTotal, setCostoSubTotal] = useState(0);
+
+    useEffect(() => {
+      let subTotalCarrito = 0;
+        articulos.forEach((item)=>{
+          subTotalCarrito += (item.precio*item.cantidad);
+        })
+        setCostoSubTotal(subTotalCarrito);
+    }, [articulos, changes])
     
     const addItem = async (item, quantity) => {
       if(!isInCart(item)){
@@ -24,7 +34,6 @@ const CartContext = React.createContext([]);
           }
 
         );
-        
       }
 
       else{
@@ -36,10 +45,13 @@ const CartContext = React.createContext([]);
           }
         });
       }
+      
+      setChanges(changes+1);
     }
 
     const clearItems = () => {
       setArticulos([]);
+      setChanges(changes+1);
     }
 
     const isInCart = (item) => {
@@ -62,6 +74,7 @@ const CartContext = React.createContext([]);
       if (indiceArticulo !== -1){
         articulos.splice(indiceArticulo,1);
       }
+      setChanges(changes+1);
     }
 
     const setItemQuantity = (item, quantity) => {
@@ -69,16 +82,19 @@ const CartContext = React.createContext([]);
         if(articulo.id === item && quantity <= articulo.stock){
           articulo.cantidad = quantity;
         }
-      }
-      );
+      });
+      setChanges(changes+1);
     }
 
 
     const context = {
       articulos,
+      costoSubTotal,
       addItem,
       clearItems,
-      removeItem
+      removeItem,
+      isInCart,
+      setItemQuantity
     }
     
   return (

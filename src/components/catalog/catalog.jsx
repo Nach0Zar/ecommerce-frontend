@@ -1,9 +1,8 @@
 import React from 'react';
 import { useState, useEffect} from 'react';
-import articulosJSON from '../../json/catalogo.json';
-import { Articulo } from '../imports/classes';
 import ItemListed from '../listing/itemListed';
 import { Link } from 'react-router-dom';
+import { obtenerArticulos } from '../imports/functions';
 
 const Catalog = () => {
   const [items, setItems] = useState([]);
@@ -11,17 +10,9 @@ const Catalog = () => {
   
   useEffect(() => {
 
-    const crearTodosLosArticulos = async () => {
-      var articulosLista = [];
-      articulosJSON.forEach((articulo)=>{
-        let {id, nombreArticulo, descripcion ,precio, imgSrc, categorias} = articulo;
-        const articuloObjeto = new Articulo (nombreArticulo, descripcion, precio, imgSrc, categorias, 0, id)
-        articulosLista.push(articuloObjeto);
-      })
-      return articulosLista;
-    }
+    
       const getItems = new Promise((resolve) => {
-          resolve(crearTodosLosArticulos());
+          resolve(obtenerArticulos());
       })
   
       getItems.then((data)=> {
@@ -67,7 +58,7 @@ const Catalog = () => {
             </div>
             <div id="listaDeObjetos">
             { items.map((item) => (
-                <div>
+                <div key={item.id}> 
                   <ItemListed key={item.id} articulo={item}/>
                   <br/>
                 </div>

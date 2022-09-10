@@ -1,12 +1,12 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useCart } from '../cart/cartContext';
 
 
 const ItemCount = (props) => {
   const itemId = props.id;
   const [counterItem, setCounterItem] = useState(1);
-  const { addItem, removeItem} = useCart();
+  const { addItem } = useCart();
   const handleAddItemOnClick = () => {
     (counterItem!==props.stock) ? setCounterItem(counterItem+1) : alert("No quedan unidades en stock disponible")
   }
@@ -17,15 +17,15 @@ const ItemCount = (props) => {
     const addToCartHandler = () => {
       addItem(itemId,counterItem);
     }
-
+    
   return (
     <>
       <div className="containerCantidadLanding">
           <div className="containerCantidadBotones2">
               <div className="input-group w-auto align-items-center">
-                  <input type="button" value="-" className="botonRestar" id="boton{id}" onClick={handleSubstractItemOnClick}/>
+                  <input type="button" value="-" className="botonRestar" onClick={handleSubstractItemOnClick}/>
                   <div className="cantidadElemento">{counterItem}</div>
-                  <input type="button" value="+" className="botonAgregar" id="boton{id}" onClick={handleAddItemOnClick}/>
+                  <input type="button" value="+" className="botonAgregar" onClick={handleAddItemOnClick}/>
               </div>
           </div>
       </div>

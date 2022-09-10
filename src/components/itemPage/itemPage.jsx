@@ -2,9 +2,11 @@ import React from 'react';
 import { useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
 import { obtenerCategoriasPorArticulo, obtenerItemPorID } from '../imports/functions';
+import { useCart } from '../cart/cartContext';
 
 const ItemPage = () => {
 var {itemId} = useParams();
+const { isInCart, addItem, removeItem} = useCart();
 const [articuloCapturado, setArticuloCapturado] = useState([]);
 const [categoriasItem, setCategoriasItem] = useState([]);
 const [texto, setTexto] = useState("");
@@ -18,7 +20,7 @@ useEffect(() => {
 
   getItemByID.then((data)=> {
     setArticuloCapturado(data);
-    if(data.agregado === false){
+    if(!isInCart(data.id)){
       setTexto("Agregar Articulo");
       setEstilo("btn btn-outline-dark botonAgregarCarrito");
     }
@@ -38,11 +40,11 @@ useEffect(() => {
     alert("Item no encontrado. " + err)
     });
   
-  }, [itemId]);
+  }, [itemId, isInCart]);
   
 useEffect(() => {
   const actualizarBoton = () => {
-    if(articuloCapturado.agregado === false){
+    if(!isInCart(articuloCapturado.id)){
       setTexto("Agregar Articulo");
       setEstilo("btn btn-outline-dark botonAgregarCarrito");
     }
@@ -52,19 +54,20 @@ useEffect(() => {
     }
   }
   actualizarBoton();
-},[texto, articuloCapturado])
+},[texto, articuloCapturado, addItem, removeItem, isInCart])
   
 
 const cambiarEstadoArticuloEnCarrito = (event) => {
   event.preventDefault();
-  articuloCapturado.cambiarEstado();
-  if(articuloCapturado.agregado === false){
+  if(!isInCart(articuloCapturado.id)){
     setTexto("Agregar Articulo");
     setEstilo("btn btn-outline-dark botonAgregarCarrito");
+    addItem(articuloCapturado.id,1);
   }
   else {
     setTexto("Articulo Añadido");
     setEstilo("btn btn-dark botonAgregarCarrito");
+    removeItem(articuloCapturado.id);
   }
 }
 
@@ -91,7 +94,7 @@ const cambiarEstadoArticuloEnCarrito = (event) => {
                       <h5 className="precioElemento">Categorías</h5>
                       <div className="categorias">
                         {categoriasItem.map((categoria) => (
-                        <p className="descripcionElemento">{categoria.nombreCategoria}</p>
+                        <p className="descripcionElemento" key={categoria.idCategoria}>{categoria.nombreCategoria}</p>
                           ))
                           }
                       </div>

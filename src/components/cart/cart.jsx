@@ -2,10 +2,10 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import ModalConfirmarCompra from './modalConfirmarCompra';
 import { useCart } from './cartContext';
+import CartItem from './cartItem';
 
 const Cart = () => {
-  const { articulos} = useCart();
-  const [costoSubTotal, setCostoSubTotal] = useState(0);
+  const { articulos, costoSubTotal } = useCart();
   const [precioServicio, setPrecioServicio] = useState(0);
   const [costoTotal, setCostoTotal] = useState(0);
   const [estilo, setEstilo] = useState("btn btn-secondary disabled");
@@ -17,18 +17,25 @@ const Cart = () => {
       (articulos.length > 0) ? setEstilo("btn btn-outline-dark") : setEstilo("btn btn-secondary disabled");
       let precioServicioCarrito = 750*articulos.length;
       setPrecioServicio(precioServicioCarrito);
-      let subTotalCarrito = 0;
-      articulos.forEach((item)=>{
-        subTotalCarrito += item.precio;
-      })
-      setCostoSubTotal(subTotalCarrito);
-      setCostoTotal(subTotalCarrito+precioServicioCarrito);
-  }, []);
+      setCostoTotal(costoSubTotal+precioServicioCarrito);
+  }, [articulos, costoSubTotal]);
+
+  
     
   return (
     <div id="listado">
+      {
+        articulos.length > 0 &&
       <div id="listaCarrito">
+        {articulos.map((articulo)=>(
+        <div key={articulo.id}>
+          <CartItem articulo={articulo}/>
+          <br/>
+        </div>
+        ))
+        }
       </div>
+      }
       <div id="containerTicketBoton">
           <div id="resumenCarrito">
               <div id="listaRecibo">

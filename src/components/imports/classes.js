@@ -19,9 +19,6 @@ export class Articulo{
     static getIdCounter(){
         return Articulo.idCounter;
     }
-    cambiarEstado() {
-        this.agregado = !this.agregado;
-    }
 
 }
 export class Categoria{
