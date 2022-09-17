@@ -2,25 +2,10 @@ import React from 'react';
 import { useState, useEffect} from 'react';
 import ItemListed from '../listing/ItemListed';
 import { Link } from 'react-router-dom';
-import { obtenerArticulos } from '../imports/functions';
+import { useArticulos } from '../listing/ItemsContext';
 
 const Catalog = () => {
-  const [items, setItems] = useState([]);
-  
-  
-  useEffect(() => {
-
-    
-      const getItems = new Promise((resolve) => {
-          resolve(obtenerArticulos());
-      })
-  
-      getItems.then((data)=> {
-        setItems(data);
-      }).catch((data)=>{
-        data.then((result)=>setItems(result))
-        });
-      }, []);
+  const { articulosListadoDB } = useArticulos();
   
     return (
       <main>
@@ -57,7 +42,7 @@ const Catalog = () => {
                 </div>
             </div>
             <div id="listaDeObjetos">
-            { items.map((item) => (
+            { articulosListadoDB.map((item) => (
                 <div key={item.id}> 
                   <ItemListed key={item.id} articulo={item}/>
                   <br/>

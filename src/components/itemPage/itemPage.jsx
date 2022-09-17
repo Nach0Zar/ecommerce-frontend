@@ -1,11 +1,14 @@
 import React from 'react';
 import { useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
-import { obtenerCategoriasPorArticulo, obtenerItemPorID } from '../imports/functions';
 import { useCart } from '../cart/CartContext';
+import { useArticulos } from '../listing/ItemsContext';
+import { useCategorias } from '../category/CategoryContext';
 
 const ItemPage = () => {
 var {itemId} = useParams();
+const { obtenerCategoriasPorArticulo } = useCategorias();
+const { obtenerItemPorID } = useArticulos();
 const { isInCart, addItem, removeItem} = useCart();
 const [articuloCapturado, setArticuloCapturado] = useState([]);
 const [categoriasItem, setCategoriasItem] = useState([]);

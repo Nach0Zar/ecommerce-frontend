@@ -7,18 +7,35 @@ import CategoryItems from './components/category/Category';
 import Cart from './components/cart/Cart';
 import Header from './components/main/Header';
 import { CartProvider } from './components/cart/CartContext';
-import { useState } from 'react';
+import { useEffect } from 'react';
 import LoadingComponent from './components/main/LoadingComponent';
+import { useArticulos } from './components/listing/ItemsContext';
+import { useCategorias } from './components/category/CategoryContext';
 
 function App() {
-  const [isLoading, setIsLoading] = useState(true);
-  //aqui se puede implementar un await a que haga un fetch de información, pero como son archivos locales la consulta se hace casi instantánea, por lo que casi 
-  //no se llega a observar el loading component, por lo que decidi darle 2 segundos en el primer render para poder observarlo
-  setTimeout(() => {
-    setIsLoading(false)
-}, 2000);
+  const { articulosLoaded, cargarArticulos } = useArticulos();
+  const { categoriasLoaded, cargarCategorias } = useCategorias();
 
-if(isLoading){ 
+  useEffect(() => {
+    if(!articulosLoaded){
+      const promise = new Promise((resolve) => {
+        resolve(cargarArticulos())
+    })
+    promise.then()
+    .catch((err)=>console.log(err));
+    }
+    else{
+      if(!categoriasLoaded){
+        const promise = new Promise((resolve) => {
+          resolve(cargarCategorias())
+      })
+      promise.then()
+      .catch((err)=>console.log(err));
+      }
+    }
+  }, [articulosLoaded, categoriasLoaded])
+
+if(!articulosLoaded || !categoriasLoaded){ 
   return(<LoadingComponent />)} 
 else
   return (

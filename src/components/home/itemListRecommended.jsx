@@ -1,19 +1,20 @@
 import React from 'react'
 import ItemRecommended from './ItemRecommended';
 import { useState, useEffect } from 'react';
-import { obtenerArticulos } from '../imports/functions';
+import { useArticulos } from '../listing/ItemsContext';
 
 const ItemListRecommended = () => {
 
     const [items, setItems] = useState([]);
+    const { obtenerArticulosPorCantidad } = useArticulos();
 
     useEffect(() => {
 
         const promise = new Promise((resolve) => {
-            resolve(obtenerArticulos(4))
+            resolve(obtenerArticulosPorCantidad(4))
         })
 
-        promise.then((data)=>{setItems(data)}).catch((err)=>console.log(err));
+        promise.then((data)=>{setItems(data);}).catch((err)=>console.log(err));
     }, []);
 
   return (
