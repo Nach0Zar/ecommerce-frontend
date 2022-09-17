@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import ItemListed from '../listing/ItemListed';
 import { Link } from 'react-router-dom';
 import { useArticulos } from '../listing/ItemsContext';
-import { useCategorias } from '../category/CategoryContext';
+import { useCategorias } from './CategoryContext';
 
 
 const CategoryItems = () => {
