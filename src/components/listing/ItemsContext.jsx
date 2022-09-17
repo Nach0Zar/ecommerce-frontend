@@ -35,7 +35,6 @@ const ArticulosContext = React.createContext([]);
     return articuloObjeto
   }
 
-
   //Obtengo el item deseado en base a su id
   const obtenerItemPorID = async (itemId) => {
     const db = getFirestore();

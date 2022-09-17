@@ -88,7 +88,6 @@ const CartContext = React.createContext([]);
       setChanges(changes+1);
     }
 
-
     const context = {
       articulos,
       costoSubTotal,
