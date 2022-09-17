@@ -20,7 +20,7 @@ const CartItem = (props) => {
       }
       useEffect(() => {
         setItemQuantity(articulo.id,counterItem);
-      }, [counterItem,articulo.id, setItemQuantity])
+      }, [counterItem,articulo.id])
       
       
     

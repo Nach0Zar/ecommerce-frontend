@@ -30,15 +30,15 @@ const Cart = () => {
       {
       articulos.length > 0 ?
         articulos.map((articulo)=>(
-          <div>
-          <CartItem articulo={articulo}/>
-          <br/>
-        </div>
+          <div key={articulo.id}>
+            <CartItem  articulo={articulo}/>
+            <br/>
+          </div>
         ))
         
         :
         <div className="elementoCarrito">
-          <div class="containerImagen">
+          <div className="containerImagen">
             <img src="https://upload.wikimedia.org/wikipedia/commons/f/f0/GHS-pictogram-unknown.svg" alt=""/>
           </div>
           <div className="containerTextosBotonCarrito">
