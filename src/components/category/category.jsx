@@ -3,10 +3,13 @@ import { useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
 import ItemListed from '../listing/ItemListed';
 import { Link } from 'react-router-dom';
-import { obtenerCategoriaPorID, obtenerItemsPorCategoria, obtenerArticulos } from '../imports/functions';
+import { useArticulos } from '../listing/ItemsContext';
+import { useCategorias } from '../category/CategoryContext';
 
 
 const CategoryItems = () => {
+const { articulosListadoDB, obtenerItemsPorCategoria } = useArticulos();
+const { obtenerCategoriaPorID } = useCategorias();
 const [itemsCategory, setItemsCategory] = useState([]);
 var {categoryId} = useParams();
 (categoryId===undefined) && (categoryId = -1);
@@ -14,13 +17,15 @@ var {categoryId} = useParams();
 
 useEffect(() => {
   
-    const getCategoryByID = new Promise((resolve,reject) => {
+
+    const getCategoryByID = new Promise((resolve) => {
 
       if(categoryId>-1){
         resolve(obtenerCategoriaPorID(categoryId));
       }
-      else{
-        reject(obtenerArticulos())
+      else
+      {
+        setItemsCategory(articulosListadoDB)
       }
       
     })
@@ -64,11 +69,11 @@ useEffect(() => {
               <br/>
               <div className="categoria">
                   <span>Tipo</span>
-                  <div className="subCategoria"><span><Link className="noDecoration" to="/CoderhouseReact/category/0" onClick={() => {window.location.href="/CoderhouseReact/category/0"}}>Cosmeticos</Link></span></div>
-                  <div className="subCategoria"><span><Link className="noDecoration" to="/CoderhouseReact/category/1" onClick={() => {window.location.href="/CoderhouseReact/category/1"}}>Electrónica</Link></span></div>
-                  <div className="subCategoria"><span><Link className="noDecoration" to="/CoderhouseReact/category/2" onClick={() => {window.location.href="/CoderhouseReact/category/2"}}>Alimentos</Link></span></div>
-                  <div className="subCategoria"><span><Link className="noDecoration" to="/CoderhouseReact/category/3" onClick={() => {window.location.href="/CoderhouseReact/category/3"}}>Escolares</Link></span></div>
-                  <div className="subCategoria"><span><Link className="noDecoration" to="/CoderhouseReact/category/4" onClick={() => {window.location.href="/CoderhouseReact/category/4"}}>Domestico</Link></span></div>
+                  <div className="subCategoria"><span><Link className="noDecoration" to="/CoderhouseReact/category/0">Cosmeticos</Link></span></div>
+                  <div className="subCategoria"><span><Link className="noDecoration" to="/CoderhouseReact/category/1">Electrónica</Link></span></div>
+                  <div className="subCategoria"><span><Link className="noDecoration" to="/CoderhouseReact/category/2">Alimentos</Link></span></div>
+                  <div className="subCategoria"><span><Link className="noDecoration" to="/CoderhouseReact/category/3">Escolares</Link></span></div>
+                  <div className="subCategoria"><span><Link className="noDecoration" to="/CoderhouseReact/category/4">Domestico</Link></span></div>
               </div>
           </div>
           <div id="listaDeObjetos">

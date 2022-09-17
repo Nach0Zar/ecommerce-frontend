@@ -1,6 +1,6 @@
 import React from 'react';
 import { useContext, useState, useEffect } from 'react';
-import { obtenerItemPorID } from '../imports/functions';
+import { useArticulos } from '../listing/ItemsContext';
 
 const CartContext = React.createContext([]);
 
@@ -9,6 +9,8 @@ const CartContext = React.createContext([]);
   }
 
   const CartProvider = ({defaultValue = [], children}) => {
+    
+    const { obtenerItemPorID } = useArticulos();
     const [articulos, setArticulos] = useState(defaultValue);
     const [changes, setChanges] = useState(0);
     const [costoSubTotal, setCostoSubTotal] = useState(0);
@@ -85,7 +87,6 @@ const CartContext = React.createContext([]);
       });
       setChanges(changes+1);
     }
-
 
     const context = {
       articulos,
