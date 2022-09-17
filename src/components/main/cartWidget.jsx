@@ -11,15 +11,13 @@ const Carrito = () => {
 
   useEffect(() => {
     var cantidadItemsTotales = 0;
-    articulos.map(articulo => {
+    articulos.foreach(articulo => {
       cantidadItemsTotales += articulo.cantidad;
     });
     setCantidadTotalItems(cantidadItemsTotales);
   }, [JSON.stringify(articulos)])
   //Hice un stringify de articulos para poder obtener los cambios hechos en las cantidades de cada uno de los articulos y al mismo tiempo capturar el cambio de
   //length en el listado de items
-
-  
 
   return (
     <Link className="nav-link text-white" to={"/CoderhouseReact/cart"}>
