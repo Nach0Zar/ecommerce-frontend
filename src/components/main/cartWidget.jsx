@@ -11,7 +11,7 @@ const Carrito = () => {
 
   useEffect(() => {
     var cantidadItemsTotales = 0;
-    articulos.map(articulo => {
+    articulos.forEach(articulo => {
       cantidadItemsTotales += articulo.cantidad;
     });
     setCantidadTotalItems(cantidadItemsTotales);
