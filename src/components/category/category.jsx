@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
-import ItemListed from '../listing/itemListed';
+import ItemListed from '../listing/ItemListed';
 import { Link } from 'react-router-dom';
 import { obtenerCategoriaPorID, obtenerItemsPorCategoria, obtenerArticulos } from '../imports/functions';
 

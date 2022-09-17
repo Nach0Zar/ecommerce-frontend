@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, useEffect} from 'react';
-import ItemListed from '../listing/itemListed';
+import ItemListed from '../listing/ItemListed';
 import { Link } from 'react-router-dom';
 import { obtenerArticulos } from '../imports/functions';
 

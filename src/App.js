@@ -1,14 +1,26 @@
-import Footer from './components/main/footer';
+import Footer from './components/main/Footer';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from './components/home/home';
-import Catalog from './components/catalog/catalog';
-import ItemPage from './components/itemPage/itemPage';
-import CategoryItems from './components/category/category';
-import Cart from './components/cart/cart';
-import Header from './components/main/header';
-import { CartProvider } from './components/cart/cartContext';
+import Home from './components/home/Home';
+import Catalog from './components/catalog/Catalog';
+import ItemPage from './components/itemPage/ItemPage';
+import CategoryItems from './components/category/Category';
+import Cart from './components/cart/Cart';
+import Header from './components/main/Header';
+import { CartProvider } from './components/cart/CartContext';
+import { useState } from 'react';
+import LoadingComponent from './components/main/LoadingComponent';
 
 function App() {
+  const [isLoading, setIsLoading] = useState(false);
+  //aqui se puede implementar un await a que haga un fetch de información, pero como son archivos locales la consulta se hace casi instantánea, por lo que casi 
+  //no se llega a observar el loading component, por lo que decidi darle 2 segundos en el primer render para poder observarlo
+  setTimeout(() => {
+    setIsLoading(false)
+}, 2000);
+
+if(isLoading){ 
+  return(<LoadingComponent />)} 
+else
   return (
     <BrowserRouter>
     <CartProvider>

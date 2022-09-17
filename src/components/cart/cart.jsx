@@ -1,10 +1,12 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import ModalConfirmarCompra from './modalConfirmarCompra';
-import { useCart } from './cartContext';
-import CartItem from './cartItem';
+import ModalConfirmarCompra from './ModalConfirmarCompra';
+import { useCart } from './CartContext';
+import CartItem from './CartItem';
+import { useNavigate } from 'react-router-dom';
 
 const Cart = () => {
+  let navigate = useNavigate();
   const { articulos, costoSubTotal } = useCart();
   const [precioServicio, setPrecioServicio] = useState(0);
   const [costoTotal, setCostoTotal] = useState(0);
@@ -24,18 +26,34 @@ const Cart = () => {
     
   return (
     <div id="listado">
-      {
-        articulos.length > 0 &&
       <div id="listaCarrito">
-        {articulos.map((articulo)=>(
-        <div key={articulo.id}>
+      {
+      articulos.length > 0 ?
+        articulos.map((articulo)=>(
+          <div>
           <CartItem articulo={articulo}/>
           <br/>
         </div>
         ))
-        }
-      </div>
+        
+        :
+        <div className="elementoCarrito">
+          <div class="containerImagen">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/f/f0/GHS-pictogram-unknown.svg" alt=""/>
+          </div>
+          <div className="containerTextosBotonCarrito">
+            <div className="containerTextos">
+              <h4 className="nombreElementoNoSeleccionado">No se selecciono ningun elemento</h4>
+            </div>
+            <div className="containerBoton">
+              <div className='container'>
+                <button type="button" className="btn btn-outline-dark botonEliminar" onClick={() => navigate("/CoderhouseReact/")}>Volver al Home!</button>
+              </div>
+            </div>
+          </div>
+        </div>
       }
+      </div>
       <div id="containerTicketBoton">
           <div id="resumenCarrito">
               <div id="listaRecibo">

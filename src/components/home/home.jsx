@@ -1,6 +1,6 @@
 import React from 'react';
-import ItemListContainerRecommended from './itemListContainerRecommended';
-import Slider from './slider';
+import ItemListContainerRecommended from './ItemListContainerRecommended';
+import Slider from './Slider';
 
 const Home = () => {
   return (

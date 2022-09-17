@@ -2,7 +2,7 @@ import React from 'react';
 import { useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
 import { obtenerCategoriasPorArticulo, obtenerItemPorID } from '../imports/functions';
-import { useCart } from '../cart/cartContext';
+import { useCart } from '../cart/CartContext';
 
 const ItemPage = () => {
 var {itemId} = useParams();

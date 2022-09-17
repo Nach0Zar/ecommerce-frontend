@@ -1,5 +1,5 @@
 import React from 'react';
-import ItemListRecommended from './itemListRecommended';
+import ItemListRecommended from './ItemListRecommended';
 
 const ItemListContainerRecommended = () => { 
   return (

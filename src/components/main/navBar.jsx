@@ -1,8 +1,10 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom';
-import Carrito from './cartWidget';
+import Carrito from './CartWidget';
+import { useCart } from '../cart/CartContext';
 
 const NavBar = () => {
+  const { articulos } = useCart();
   return (
     <nav className="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
       <div className="container-fluid">
@@ -20,7 +22,9 @@ const NavBar = () => {
             <li className="nav-item navLink"><NavLink className="nav-link text-white" to={"/CoderhouseReact/"}>Acerca de nosotros</NavLink></li>
           </ul>
         </div>
-        <Carrito/>
+
+        {articulos.length > 0 && 
+          <Carrito/>}
       </div>
     </nav>
   )
