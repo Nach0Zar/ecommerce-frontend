@@ -3,6 +3,8 @@ import { Modal } from "react-bootstrap";
 import { useState, useEffect } from 'react';
 import { useUsuario } from '../user/UserContext';
 import { Usuario } from '../imports/classes';
+import { setDoc, getFirestore, serverTimestamp , doc } from "firebase/firestore";
+import { useCart } from './CartContext';
 
 const ModalConfirmarCompra = (props) => {
     const costoTotal = props.costoTotal;
@@ -13,6 +15,7 @@ const ModalConfirmarCompra = (props) => {
     const [fechaVto, setFechaVto] = useState('');
     const [usuarioDatos, setUsuarioDatos] = useState('');
     const { usuario } = useUsuario();
+    const { articulos } = useCart();
 
     useEffect(() => {
         if(usuario === null){
@@ -35,7 +38,7 @@ const ModalConfirmarCompra = (props) => {
     const handleChangeCodigoSeguridad = (e) => {
         setCodigoSeguridad(e.target.value.slice(0,e.target.maxLength));
     }
-    const realizarCompra = (e) => {
+    const realizarCompra = async (e) => {
         let inputElements = document.querySelectorAll("input");
         let cuotas;
         let correctCard = false;
@@ -70,6 +73,26 @@ const ModalConfirmarCompra = (props) => {
         //revisa si todos los inputs fueron llenados correctamente
         if (correctCard && correctCode && correctDate){
             alert("El valor total fue divido en "+ cuotas + " cuotas de $" + calcularCuotas(parseInt(cuotas)) + " cada una, ya que el valor total es de $" + costoTotal);
+            const db = getFirestore();
+            const usuarioDoc = doc(db, "usuarios", usuarioDatos.id);
+            let listadoDocs = [];
+            articulos.forEach(articulo => {
+                let articuloDoc = doc(db, "catalogo", articulo.id.toString());
+                listadoDocs.push(articuloDoc);
+            });
+            console.log(listadoDocs);
+            const compra = {
+                usuario: usuarioDoc,
+                items: listadoDocs,
+                date: serverTimestamp(),
+                total: costoTotal
+            }
+            let yourDate = new Date()
+            const offset = yourDate.getTimezoneOffset()
+            yourDate = new Date(yourDate.getTime() - (offset*60*1000))
+            const compraID = usuarioDatos.id+"-"+yourDate.toISOString().split('T')[0];
+            console.log(compraID)
+            await setDoc(doc(db, "compras", compraID), compra).then(alert("Compra realizada correctamente"));
             handleClose();
         }
     }
