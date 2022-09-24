@@ -1,12 +1,13 @@
 import React from 'react';
 import { useState } from 'react';
 import { useCart } from '../cart/CartContext';
-
+import { useUsuario } from '../user/UserContext';
 
 const ItemCount = (props) => {
   const itemId = props.id;
   const [counterItem, setCounterItem] = useState(1);
   const { addItem } = useCart();
+  const { usuario } = useUsuario();
   const handleAddItemOnClick = () => {
     (counterItem!==props.stock) ? setCounterItem(counterItem+1) : alert("No quedan unidades en stock disponible")
   }
@@ -15,7 +16,12 @@ const ItemCount = (props) => {
       (counterItem>1) && (setCounterItem(counterItem-1));
     }
     const addToCartHandler = () => {
-      addItem(itemId,counterItem);
+      if(!(usuario === null)){
+        addItem(itemId,counterItem);
+      }
+      else{
+        alert("Debes estar logueado para poder agregar articulos a tu carrito!")
+      }
     }
     
   return (

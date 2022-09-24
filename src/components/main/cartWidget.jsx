@@ -10,7 +10,6 @@ const Carrito = () => {
   const [cantidadTotalItems, setCantidadTotalItems] = useState(0);
 
   useEffect(() => {
-    console.log(articulos);
     var cantidadItemsTotales = 0;
     articulos.forEach(articulo => {
       cantidadItemsTotales += articulo.cantidad;

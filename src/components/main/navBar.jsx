@@ -17,8 +17,8 @@ const NavBar = () => {
             <li className="nav-item navLink"><NavLink className="nav-link text-white" to={"/CoderhouseReact/"}>Inicio</NavLink></li>
             <li className="nav-item navLink"><NavLink className="nav-link text-white" to={"/CoderhouseReact/catalog/"}>Mercado</NavLink></li>
             <li className="nav-item navLink"><NavLink className="nav-link text-white" to={"/CoderhouseReact/"}>FAQs</NavLink></li>
-            <li className="nav-item navLink"><NavLink className="nav-link text-white" to={"/CoderhouseReact/"}>Loguearse</NavLink></li>
-            <li className="nav-item navLink"><NavLink className="nav-link text-white" to={"/CoderhouseReact/"}>Registrarse</NavLink></li>
+            <li className="nav-item navLink"><NavLink className="nav-link text-white" to={"/CoderhouseReact/login"}>Loguearse</NavLink></li>
+            <li className="nav-item navLink"><NavLink className="nav-link text-white" to={"/CoderhouseReact/register"}>Registrarse</NavLink></li>
             <li className="nav-item navLink"><NavLink className="nav-link text-white" to={"/CoderhouseReact/"}>Acerca de nosotros</NavLink></li>
           </ul>
         </div>

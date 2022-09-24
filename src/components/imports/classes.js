@@ -21,6 +21,7 @@ export class Articulo{
     }
 
 }
+
 export class Categoria{
     static idCounter = 0;
     constructor(idCategoria, nombreCategoria){
@@ -37,28 +38,15 @@ export class Categoria{
         return Categoria.idCounter;
     }
 }
-// export class Categories{
-//     static categories = [];
-//     constructor(){
-//         console.log("entrada "+Categories.categories)
-//         Categories.createCategories();
-//         console.log("salida "+Categories.categories);
-//         Categories.categories.forEach((category)=>console.log(category));
-//     }
-//     static getCategories = async () => {
-//         const URL = "https://api.mercadolibre.com/sites/MLA/categories";
-//         return await fetch(URL).then((response)=>response.json());
-//     }
-//     static createCategories(){
-//         if (Categories.categories === []){
-//             console.log("entro")
-//             const promise = new Promise((resolve) => {
-//                 resolve(Categories.getCategories());
-//             })
-//             promise.then((data)=> Categories.categories=(data)).catch((err)=>console.log(err));
-//             for (var category in Categories.categories){
-//                 Categories.categories.push(category);
-//             }
-//         }
-//     }
-// }
+
+export class Usuario{
+    constructor(nombreUsuario, password, direccion, email, dni){
+        this.id = nombreUsuario;
+        this.nombreUsuario = nombreUsuario;
+        this.password = password;
+        this.direccion = direccion;
+        this.email = email;
+        this.dni = dni;
+    }
+    
+};
