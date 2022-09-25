@@ -91,7 +91,6 @@ const ModalConfirmarCompra = (props) => {
             let yourDate = new Date();
             const offset = yourDate.getTimezoneOffset();
             yourDate = new Date(yourDate.getTime() - (offset*60*1000));
-            //const compraID = usuarioDatos.id+"-"+yourDate.toISOString().split('T')[0];
             function padTo2Digits(num) {
                 return num.toString().padStart(2, '0');
               }

@@ -1,7 +1,9 @@
 import React from 'react';
 import { useContext, useState } from 'react';
+import { useCart } from '../cart/CartContext';
 
 const UsuarioContext = React.createContext([]);
+  
 
   const useUsuario = () => {
     return useContext(UsuarioContext);
@@ -10,13 +12,15 @@ const UsuarioContext = React.createContext([]);
   const UsuarioProvider = ({defaultValue = null, children}) => {
     
     const [usuario, setUsuario] = useState(defaultValue);
+    const { clearItems } = useCart();
 
     const loguearUser = (usuario) => {
         setUsuario(usuario);
       }
 
       const desloguearUser = () => {
-        setUsuario([]);
+        setUsuario(null);
+        clearItems();
       }
 
     const context = {
