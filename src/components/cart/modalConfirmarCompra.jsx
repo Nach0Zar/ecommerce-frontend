@@ -114,6 +114,9 @@ const ModalConfirmarCompra = (props) => {
             handleClose();
             navigate("/CoderhouseReact");
         }
+        else{
+            alert("Los datos de pago son incorrectos. Por favor, revisar e intentar nuevamente.")
+        }
     }
   return (
     <>
@@ -179,7 +182,7 @@ const ModalConfirmarCompra = (props) => {
                             <div className="input-group-prepend">
                                 <span className="input-group-text" id="basic-addon1">Titular</span>
                             </div>
-                        <input type="text" className="form-control" name="nombre" default="nombre" placeholder="Nombre Apellido"/>
+                        <input type="text" className="form-control" name="nombre" default="nombre" placeholder="Nombre Apellido" required/>
                         </div>
                     </div>
                     <div className="form-group mb-3">
