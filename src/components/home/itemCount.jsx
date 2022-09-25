@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { useCart } from '../cart/CartContext';
 import { useUsuario } from '../user/UserContext';
+import swal from 'sweetalert';
 
 const ItemCount = (props) => {
   const itemId = props.id;
@@ -9,7 +10,7 @@ const ItemCount = (props) => {
   const { addItem } = useCart();
   const { usuario } = useUsuario();
   const handleAddItemOnClick = () => {
-    (counterItem!==props.stock) ? setCounterItem(counterItem+1) : alert("No quedan unidades en stock disponible")
+    (counterItem!==props.stock) ? setCounterItem(counterItem+1) : swal("Stock","No quedan unidades en stock disponible", "info")
   }
 
     const handleSubstractItemOnClick = () => {
@@ -20,7 +21,7 @@ const ItemCount = (props) => {
         addItem(itemId,counterItem);
       }
       else{
-        alert("Debes estar logueado para poder agregar articulos a tu carrito!")
+        swal("Usuario no logueado", "Debes estar logueado para poder agregar articulos a tu carrito!", "warning");
       }
     }
     

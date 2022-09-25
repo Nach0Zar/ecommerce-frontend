@@ -5,7 +5,7 @@ import { useCart } from '../cart/CartContext';
 import { useArticulos } from '../listing/ItemsContext';
 import { useCategorias } from '../category/CategoryContext';
 import { useUsuario } from '../user/UserContext';
-
+import swal from 'sweetalert';
 
 const ItemPage = () => {
 var {itemId} = useParams();
@@ -43,7 +43,7 @@ useEffect(() => {
     .catch((err)=>console.log(err));
       
   }).catch((err)=>{
-    alert("Item no encontrado. " + err)
+    swal("Item no encontrado","El item no fue encontrado. "+err,"error")
     });
   
   }, [itemId, isInCart, obtenerCategoriasPorArticulo, obtenerItemPorID]);
@@ -72,7 +72,7 @@ const cambiarEstadoArticuloEnCarrito = (event) => {
       addItem(articuloCapturado.id,1);
     }
     else{
-      alert("Debes estar logueado para poder agregar articulos a tu carrito!")
+      swal("Usuario no logueado", "Debes estar logueado para poder agregar articulos a tu carrito!", "warning");
     }
   }
   else {

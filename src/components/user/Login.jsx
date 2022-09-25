@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { useUsuario } from './UserContext';
 import { Usuario } from '../imports/classes';
 import { useNavigate } from 'react-router-dom';
+import swal from 'sweetalert';
 
 const Login = () => {
     let navigate = useNavigate();
@@ -39,19 +40,19 @@ const Login = () => {
             const usuarioSnap = await getDoc(usuarioDoc);
             if(usuarioSnap.data()){
                 if (usuarioSnap.data().password === password){
-                    alert("logueado correctamente!");
+                    swal("Login","Usuario logueado correctamente!", "success");
                     const usuario = new Usuario (usuarioSnap.data().nombreUsuario, usuarioSnap.data().password, usuarioSnap.data().direccion, usuarioSnap.data().email, usuarioSnap.data().dni)
                     loguearUser(usuario);
                     let path = `/CoderhouseReact/`; 
                     navigate(path);
                 }
                 else{
-                    alert("Contraseña incorrecta, por favor indicar la contraseña correcta");
+                    swal("Información errónea","Contraseña incorrecta, por favor indicar la contraseña correcta","warning");
                 }
                 
             }
             else{
-                alert("El Nombre de Usuario no existe");
+                swal("Usuario inexistente","El Nombre de Usuario no existe. Pruebe registrandolo!", "error");
             }
         }
         

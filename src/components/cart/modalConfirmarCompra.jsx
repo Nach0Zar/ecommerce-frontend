@@ -6,6 +6,7 @@ import { Usuario } from '../imports/classes';
 import { setDoc, getFirestore, serverTimestamp , doc, getDoc, updateDoc } from "firebase/firestore";
 import { useCart } from './CartContext';
 import { useNavigate } from 'react-router-dom';
+import swal from 'sweetalert';
 
 const ModalConfirmarCompra = (props) => {
     let navigate = useNavigate();
@@ -46,6 +47,7 @@ const ModalConfirmarCompra = (props) => {
         let correctCard = false;
         let correctCode = false;
         let correctDate = false;
+        let correctNameCard = false;
         inputElements.forEach(function(input) {
             switch(input.name){
                 case 'cuotas':
@@ -68,13 +70,17 @@ const ModalConfirmarCompra = (props) => {
                         correctDate = true;
                     }
                     break;
+                case 'nombreTitular':
+                    if(input.value.toString().length !== 0){
+                        correctNameCard = true;
+                    }
+                    break;
                 default:
                     break;
             }
         });
         //revisa si todos los inputs fueron llenados correctamente
-        if (correctCard && correctCode && correctDate){
-            alert("El valor total fue divido en "+ cuotas + " cuotas de $" + calcularCuotas(parseInt(cuotas)) + " cada una, ya que el valor total es de $" + costoTotal);
+        if (correctCard && correctCode && correctDate && correctNameCard){
             const db = getFirestore();
             const usuarioDoc = doc(db, "usuarios", usuarioDatos.id);
             let listadoDocs = [];
@@ -109,13 +115,15 @@ const ModalConfirmarCompra = (props) => {
                     })
                 });
                 clearItems();
-                alert("Compra realizada correctamente");
+                swal("Compra realizada!", "El valor total fue divido en "+ cuotas + " cuotas de $" + calcularCuotas(parseInt(cuotas)) + " cada una, ya que el valor total es de $" + costoTotal, "success");
+            }).catch(()=>{
+                swal("Compra no realizada", "Desafortunadamente, hubo un problema con la página. Por favor, intentar nuevamente en unos instantes.", "error");
             });
             handleClose();
             navigate("/CoderhouseReact");
         }
         else{
-            alert("Los datos de pago son incorrectos. Por favor, revisar e intentar nuevamente.")
+            swal("Información errónea", "Los datos de pago son incorrectos. Por favor, revisar e intentar nuevamente.", "error");
         }
     }
   return (
@@ -134,7 +142,7 @@ const ModalConfirmarCompra = (props) => {
                             <div className="input-group-prepend">
                                 <span className="input-group-text" id="basic-addon1">@</span>
                             </div>
-                        <input type="text" className="form-control" placeholder="Nombre de Usuario" name="username" default="username" readOnly="readOnly" defaultValue={usuarioDatos.nombreUsuario}/>
+                        <input type="text" className="form-control" placeholder="Nombre de Usuario" name="username" readOnly="readOnly" defaultValue={usuarioDatos.nombreUsuario}/>
                         </div>
                     </div>
                     <div className="form-group">
@@ -142,7 +150,7 @@ const ModalConfirmarCompra = (props) => {
                             <div className="input-group-prepend">
                                 <span className="input-group-text" id="basic-addon1">Mail de contacto</span>
                             </div>
-                        <input type="email" className="form-control" placeholder="Mail del usuario" name="email" default="email" readOnly="readOnly" defaultValue={usuarioDatos.email}/>
+                        <input type="email" className="form-control" placeholder="Mail del usuario" name="email" readOnly="readOnly" defaultValue={usuarioDatos.email}/>
                         </div>
                     </div>
                     <div className="form-group">
@@ -150,7 +158,7 @@ const ModalConfirmarCompra = (props) => {
                             <div className="input-group-prepend">
                                 <span className="input-group-text" id="basic-addon1">DNI</span>
                             </div>
-                        <input type="text" className="form-control" placeholder="DNI del usuario" name="nombre" default="nombre" readOnly="readOnly" defaultValue={usuarioDatos.dni}/>
+                        <input type="text" className="form-control" placeholder="DNI del usuario" name="nombre" readOnly="readOnly" defaultValue={usuarioDatos.dni}/>
                         </div>
                     </div>
                     <div className="form-group">
@@ -182,7 +190,7 @@ const ModalConfirmarCompra = (props) => {
                             <div className="input-group-prepend">
                                 <span className="input-group-text" id="basic-addon1">Titular</span>
                             </div>
-                        <input type="text" className="form-control" name="nombre" default="nombre" placeholder="Nombre Apellido" required/>
+                        <input type="text" className="form-control" name="nombreTitular" placeholder="Nombre Apellido" required/>
                         </div>
                     </div>
                     <div className="form-group mb-3">

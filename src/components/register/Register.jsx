@@ -8,6 +8,7 @@ import { useState } from 'react';
 import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
 import { Usuario } from "../imports/classes";
 import { useNavigate } from 'react-router-dom';
+import swal from 'sweetalert';
 
 const Register = () => {
     const [nombreUsuario, setNombreUsuario] = useState('');
@@ -71,12 +72,12 @@ const Register = () => {
             if(!usuarioSnap.data()){
                 const usuario = new Usuario (nombreUsuario, password, direccion, email, dni);
     
-                await setDoc(doc(db, "usuarios", nombreUsuario), usuario).then(alert("Usuario creado correctamente"));
+                await setDoc(doc(db, "usuarios", nombreUsuario), usuario).then(swal("Registrado","Usuario creado correctamente","success"));
                 let path = `/CoderhouseReact/`; 
                 navigate(path);
             }
             else{
-                alert("El Nombre de Usuario ya fue registrado");
+                swal("Usuario ya registrado", "El Nombre de Usuario ya fue registrado!", "warning");
             }
         }
         

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useCart } from './CartContext';
 import { useState, useEffect } from 'react';
+import swal from 'sweetalert';
 
 const CartItem = (props) => {
     let articulo = props.articulo;
@@ -8,7 +9,7 @@ const CartItem = (props) => {
     const { setItemQuantity, removeItem } = useCart();
     
     const handleAddItemOnClick = () => {
-        (counterItem < articulo.stock) ? setCounterItem(articulo.cantidad+1) : alert("No quedan unidades en stock disponible")
+        (counterItem < articulo.stock) ? setCounterItem(articulo.cantidad+1) : swal("Stock","No quedan unidades en stock disponible","info")
       }
     
     const handleSubstractItemOnClick = () => {
