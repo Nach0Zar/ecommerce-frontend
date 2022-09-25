@@ -3,10 +3,12 @@ import { Modal } from "react-bootstrap";
 import { useState, useEffect } from 'react';
 import { useUsuario } from '../user/UserContext';
 import { Usuario } from '../imports/classes';
-import { setDoc, getFirestore, serverTimestamp , doc } from "firebase/firestore";
+import { setDoc, getFirestore, serverTimestamp , doc, getDoc, updateDoc } from "firebase/firestore";
 import { useCart } from './CartContext';
+import { useNavigate } from 'react-router-dom';
 
 const ModalConfirmarCompra = (props) => {
+    let navigate = useNavigate();
     const costoTotal = props.costoTotal;
     const show = props.show;
     const handleClose = props.onHide;
@@ -15,7 +17,7 @@ const ModalConfirmarCompra = (props) => {
     const [fechaVto, setFechaVto] = useState('');
     const [usuarioDatos, setUsuarioDatos] = useState('');
     const { usuario } = useUsuario();
-    const { articulos } = useCart();
+    const { articulos, clearItems } = useCart();
 
     useEffect(() => {
         if(usuario === null){
@@ -80,20 +82,38 @@ const ModalConfirmarCompra = (props) => {
                 let articuloDoc = doc(db, "catalogo", articulo.id.toString());
                 listadoDocs.push(articuloDoc);
             });
-            console.log(listadoDocs);
             const compra = {
                 usuario: usuarioDoc,
                 items: listadoDocs,
                 date: serverTimestamp(),
                 total: costoTotal
             }
-            let yourDate = new Date()
-            const offset = yourDate.getTimezoneOffset()
-            yourDate = new Date(yourDate.getTime() - (offset*60*1000))
-            const compraID = usuarioDatos.id+"-"+yourDate.toISOString().split('T')[0];
-            console.log(compraID)
-            await setDoc(doc(db, "compras", compraID), compra).then(alert("Compra realizada correctamente"));
+            let yourDate = new Date();
+            const offset = yourDate.getTimezoneOffset();
+            yourDate = new Date(yourDate.getTime() - (offset*60*1000));
+            //const compraID = usuarioDatos.id+"-"+yourDate.toISOString().split('T')[0];
+            function padTo2Digits(num) {
+                return num.toString().padStart(2, '0');
+              }
+            //seteo un ID de compra en base al usuario y al tiempo exacto de compra, algo que es único ya que un mismo usuario no puede realizar 2 compras en el mismo instante
+            const compraID = usuarioDatos.id+"-"+yourDate.getFullYear()+"-"+padTo2Digits(yourDate.getMonth() + 1)+"-"+padTo2Digits(yourDate.getDay())+"-"+padTo2Digits(yourDate.getHours())+"-"+padTo2Digits(yourDate.getMinutes())+"-"+padTo2Digits(yourDate.getSeconds());
+            await setDoc(doc(db, "compras", compraID), compra)
+            .then(()=> {
+                //restar a los stocks y vaciar carrito
+                articulos.forEach(articulo => {
+                    let articuloDoc = doc(db, "catalogo", articulo.id.toString());
+                    getDoc(articuloDoc).then((data)=>{
+                        let newStock = data.data().stock - articulo.cantidad;
+                        updateDoc(articuloDoc, {
+                            stock: newStock
+                        });
+                    })
+                });
+                clearItems();
+                alert("Compra realizada correctamente");
+            });
             handleClose();
+            navigate("/CoderhouseReact");
         }
     }
   return (
