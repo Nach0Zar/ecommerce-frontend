@@ -21,8 +21,6 @@ const Cart = () => {
       setPrecioServicio(precioServicioCarrito);
       setCostoTotal(costoSubTotal+precioServicioCarrito);
   }, [articulos, costoSubTotal]);
-
-  
     
   return (
     <div id="listado">

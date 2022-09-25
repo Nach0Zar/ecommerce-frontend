@@ -4,9 +4,12 @@ import { useParams } from 'react-router-dom';
 import { useCart } from '../cart/CartContext';
 import { useArticulos } from '../listing/ItemsContext';
 import { useCategorias } from '../category/CategoryContext';
+import { useUsuario } from '../user/UserContext';
+
 
 const ItemPage = () => {
 var {itemId} = useParams();
+const { usuario } = useUsuario();
 const { obtenerCategoriasPorArticulo } = useCategorias();
 const { obtenerItemPorID } = useArticulos();
 const { isInCart, addItem, removeItem} = useCart();
@@ -43,7 +46,7 @@ useEffect(() => {
     alert("Item no encontrado. " + err)
     });
   
-  }, [itemId, isInCart]);
+  }, [itemId, isInCart, obtenerCategoriasPorArticulo, obtenerItemPorID]);
   
 useEffect(() => {
   const actualizarBoton = () => {
@@ -65,7 +68,12 @@ const cambiarEstadoArticuloEnCarrito = (event) => {
   if(!isInCart(articuloCapturado.id)){
     setTexto("Agregar Articulo");
     setEstilo("btn btn-outline-dark botonAgregarCarrito");
-    addItem(articuloCapturado.id,1);
+    if(!(usuario === null)){
+      addItem(articuloCapturado.id,1);
+    }
+    else{
+      alert("Debes estar logueado para poder agregar articulos a tu carrito!")
+    }
   }
   else {
     setTexto("Articulo Añadido");

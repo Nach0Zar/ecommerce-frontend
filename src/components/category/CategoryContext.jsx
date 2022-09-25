@@ -1,7 +1,7 @@
 import React from 'react';
 import { Categoria } from "../imports/classes";
 import { useContext, useState } from 'react';
-import {collection, getDocs, getFirestore, query, where, limit, getDoc, doc} from "firebase/firestore";
+import { collection, getDocs, getFirestore, getDoc, doc } from "firebase/firestore";
 
 const CategoriasContext = React.createContext([]);
 

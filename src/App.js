@@ -11,6 +11,9 @@ import { useEffect } from 'react';
 import LoadingComponent from './components/main/LoadingComponent';
 import { useArticulos } from './components/listing/ItemsContext';
 import { useCategorias } from './components/category/CategoryContext';
+import Register from './components/register/Register';
+import Login from './components/user/Login';
+import { UsuarioProvider } from './components/user/UserContext';
 
 function App() {
   const { articulosLoaded, cargarArticulos } = useArticulos();
@@ -41,17 +44,21 @@ else
   return (
     <BrowserRouter>
     <CartProvider>
-      <Header/>
-      <Routes>
-        <Route exact path="/" element={ <Home />} />
-        <Route exact path="/CoderhouseReact/" element={ <Home />} />
-        <Route exact path="/CoderhouseReact/catalog" element={ <Catalog />} />
-        <Route path="/CoderhouseReact/itemPage/:itemId" element={ <ItemPage />} />
-        <Route path="/CoderhouseReact/category" element={ <CategoryItems />}/>
-        <Route path="/CoderhouseReact/category/:categoryId" element={ <CategoryItems />}/>
-        <Route exact path="/CoderhouseReact/cart" element={ <Cart />}/>
-      </Routes>
-      <Footer/>
+      <UsuarioProvider>
+        <Header/>
+        <Routes>
+          <Route exact path="/" element={ <Home />} />
+          <Route exact path="/CoderhouseReact/" element={ <Home />} />
+          <Route exact path="/CoderhouseReact/catalog" element={ <Catalog />} />
+          <Route path="/CoderhouseReact/itemPage/:itemId" element={ <ItemPage />} />
+          <Route path="/CoderhouseReact/category" element={ <CategoryItems />}/>
+          <Route path="/CoderhouseReact/category/:categoryId" element={ <CategoryItems />}/>
+          <Route exact path="/CoderhouseReact/cart" element={ <Cart />}/>
+          <Route exact path="/CoderhouseReact/register" element={ <Register />}/>
+          <Route exact path="/CoderhouseReact/login" element={ <Login />}/>
+        </Routes>
+        <Footer/>
+      </UsuarioProvider>
     </CartProvider>
   </BrowserRouter>
   );
