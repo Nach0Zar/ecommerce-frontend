@@ -1,6 +1,5 @@
 html, body, #root {
   margin: 0;
-  height: 100%;
 }
 
 nav {
@@ -202,7 +201,13 @@ h1 {
 .itemDiv, .preguntaDiv, .perfilDiv, #loginDiv, #registerDiv, #containerAboutus {
   border: 1px lightgrey solid;
 }
-
+.perfilDiv{
+  max-width: 1200px;
+}
+.perfilContainer{
+  display: flex;
+  justify-content: space-evenly;
+}
 #loginDiv, #registerDiv {
   display: table;
   width: 40%;

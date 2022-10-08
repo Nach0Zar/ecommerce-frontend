@@ -122,11 +122,11 @@ const Profile = () => {
     return (
         <div>
             {(!isLoggedIn) && <Navigate to="/CoderhouseReact/"/> }
-            <div>
+            <div className="perfilContainer">
                 <div className="perfilDiv">
                     <h3>Bienvenido {userPerfil.nombreUsuario} !</h3>
                     <h5>Esta es la pestaña de edición de datos</h5>
-                    <p>Para comprar productos, es necesario primero registrarse en la página o, en caso de ya contar con una cuenta, loguearse. Una vez dentro de la cuenta, iremos al buscador a elegir el elemento que deseamos adquirir. Al comprar el elemento, deberemos elegir método de pago y domicilio del comprador.</p>    
+                    <p>Para editar los datos del usuario, ingresar los datos y luego cambiar datos una vez revisada la información ingresada.</p>    
                     <form action="" className="m-5">
                         <div className="form-group">
                             <div className="input-group mb-1">
@@ -161,7 +161,7 @@ const Profile = () => {
                             </div>
                         </div>
                         <div className="form-group">
-                            <div className="input-group mb-3">
+                            <div className="input-group mb-1">
                                 <div className="input-group-prepend">
                                     <span className="input-group-text" id="basic-addon1">Telefono</span>
                                 </div>
@@ -169,7 +169,7 @@ const Profile = () => {
                             </div>
                         </div>
                         <div className="form-group">
-                            <div className="input-group mb-3">
+                            <div className="input-group mb-1">
                                 <div className="input-group-prepend">
                                     <span className="input-group-text" id="basic-addon1">Contraseña</span>
                                 </div>
