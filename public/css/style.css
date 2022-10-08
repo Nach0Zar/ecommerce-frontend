@@ -208,10 +208,11 @@ h1 {
   display: flex;
   justify-content: space-evenly;
 }
-.perfilContainer{
+.faqsContainer{
   display: flex;
   flex-flow: column nowrap;
 }
+
 #loginDiv, #registerDiv {
   display: table;
   width: 40%;
@@ -275,9 +276,13 @@ h1 {
   display: flex;
   flex-flow: column wrap;
   align-items: center;
+  max-width: 1500px;
+  margin: auto auto;
+  border-radius: 25px;
+
 }
 
-.preguntaDiv, .perfilDiv, #containerAboutus {
+.preguntaDiv, .perfilDiv {
   border-radius: 25px;
   margin: 30px 30px;
 }

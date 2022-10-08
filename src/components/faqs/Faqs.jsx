@@ -2,7 +2,7 @@ import React from 'react'
 
 const Faqs = () => {
   return (
-    <div className="perfilContainer">
+    <div className="faqsContainer">
         <div className="preguntaDiv">
             <h3>¿Cómo puedo comprar?</h3>
             <p>Para comprar productos, es necesario primero registrarse en la página o, en caso de ya contar con una cuenta, loguearse. Una vez dentro de la cuenta, iremos al buscador a elegir el elemento que deseamos adquirir. Al comprar el elemento, deberemos elegir método de pago y domicilio del comprador.</p>    
