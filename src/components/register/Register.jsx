@@ -88,6 +88,9 @@ const Register = () => {
                 swal("Usuario ya registrado", "El Nombre de Usuario ya fue registrado!", "warning");
             }
         }
+        else{
+            swal("Información incorrecta", "La información ingresada es erronea! Por favor revisar la información ingresada y en caso de ser correcta contactarse con el soporte", "warning");
+        }
         
     }
 
