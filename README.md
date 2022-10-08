@@ -3,11 +3,17 @@
 This project was created for the Coderhouse React Course (34730). It features an ECommerce where you can:
 
 · Register, Login, Sign out and profile detail edition
+
 · Add different items to your cart and remove items from your cart
+
 · Add multiple items of the same kind
+
 · Successfully complete the order
+
 · List all items or by category
+
 · See the complete information of the items in each specific page
+
 
 ## How to navigate
 
@@ -15,12 +21,19 @@ This project was created for the Coderhouse React Course (34730). It features an
 
 First, you will have to register a user in order to be able to add items to your cart. You will enter to the nav bar button `Registrarse`, and enter the following data:
 
+
 · Username: An alphanumerical name can be picked. You have to choose a name thats elegible (not being used).
+
 · Password: Alphanumerical sequence
+
 · Home address: Be sure to parse it correctly!
+
 · Email address: It has a validation for the email format, so make sure you are typing it correctly.
+
 · DNI/Passport: A 8 digit number
+
 · Telephone: A 10 digit number 
+
 
 When submitting you will see a sweetalert showing the status of the registration (Success or Error)
 
