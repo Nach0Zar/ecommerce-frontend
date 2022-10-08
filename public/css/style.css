@@ -198,10 +198,10 @@ h1 {
   margin: 10% auto 0 auto;
 }
 
-.itemDiv, .preguntaDiv, .perfilDiv, #loginDiv, #registerDiv, #containerAboutus {
+.itemDiv, .preguntaDiv, .perfilDiv, .ordersDiv, #loginDiv, #registerDiv, #containerAboutus {
   border: 1px lightgrey solid;
 }
-.perfilDiv{
+.perfilDiv, .ordersDiv{
   max-width: 1200px;
 }
 .perfilContainer{
@@ -286,12 +286,12 @@ h1 {
 
 }
 
-.preguntaDiv, .perfilDiv {
+.preguntaDiv, .perfilDiv, .ordersDiv {
   border-radius: 25px;
   margin: 30px 30px;
 }
 
-.itemDiv:hover, .perfilDiv:hover, .preguntaDiv:hover, #loginDiv:hover, #registerDiv:hover, #containerAboutus:hover {
+.itemDiv:hover, .perfilDiv:hover, .ordersDiv:hover, .preguntaDiv:hover, #loginDiv:hover, #registerDiv:hover, #containerAboutus:hover {
   box-shadow: 0 0 11px rgba(33, 33, 33, 0.4);
 }
 
