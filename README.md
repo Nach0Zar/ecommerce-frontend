@@ -1,70 +1,74 @@
-# Getting Started with Create React App
+# Project overview
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was created for the Coderhouse React Course (34730). It features an ECommerce where you can:
 
-## Available Scripts
+· Register, Login, Sign out and profile detail edition
+· Add different items to your cart and remove items from your cart
+· Add multiple items of the same kind
+· Successfully complete the order
+· List all items or by category
+· See the complete information of the items in each specific page
 
-In the project directory, you can run:
+## How to navigate
 
-### `npm start`
+### Register and Login
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+First, you will have to register a user in order to be able to add items to your cart. You will enter to the nav bar button `Registrarse`, and enter the following data:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+· Username: An alphanumerical name can be picked. You have to choose a name thats elegible (not being used).
+· Password: Alphanumerical sequence
+· Home address: Be sure to parse it correctly!
+· Email address: It has a validation for the email format, so make sure you are typing it correctly.
+· DNI/Passport: A 8 digit number
+· Telephone: A 10 digit number 
 
-### `npm test`
+When submitting you will see a sweetalert showing the status of the registration (Success or Error)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+After you register, you have to login, clicking the nav bar button `Loguearse`, which will ask for Username and Password.
 
-### `npm run build`
+### Cart
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Only when logged in, you will be able to add items to your cart. You can add Different items in different quantities. You are able to add some of them from the landing and from each item detail page. All items are shown in the nav bar button `Mercado`.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Filtering items by category
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+You can as well filter some Items by category. This filtration is on the sidebar at the `Mercado` tab. Currently, the only filtering available is the `Tipo`.
 
-### `npm run eject`
+### Item information detail
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Here you have all the item information, showing image, name, description, price and categories. Also. you have the option to add it to the cart.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Finishing order
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+When navigating to the cart widget on the nav bar (only visible when the cart has items), you will be able to edit the quantity of each item and to process the order. To complete the order, you will click on the button `Realizar compra`, which will popup a modal where you can see your user information and you have to complete the payment method information with the following:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+· Credit card number: A 10 digit number
+· Card expiricy date (Currently has no validation)
+· Card Pin code: A 4 digit number
+· Card Owner name
 
-## Learn More
+When clicked `Realizar compra` on the modal, a SweetAlert will popup showing the order status.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Listing user orders
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+You will have a list of orders in the nav bar button `Ordenes` with each order information listing:
 
-### Code Splitting
+· Order ID: A string ID that is made from the username and the exact date
+· Items purchased with each quantity
+· Price: The ammount that was payed
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Editing user information
 
-### Analyzing the Bundle Size
+You can edit all your information, except your username, from the nav bar button `Usuario`. The same validation as in registering will be done in each field.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Implamentations
 
-### Making a Progressive Web App
+Some packages were installed through the command `npm install`. Some of them are:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+· React-Bootstrap
+· React-Router-Dom
+· SweetAlert
+· Firebase
+· GH-pages (For an easier deployment to GitHub Pages via the command `npm deploy`)
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

@@ -40,11 +40,8 @@ const Orders = () => {
             <div className="ordersDiv">
                 {(!isLoggedIn) && <Navigate to="/CoderhouseReact/"/> }
                 {compras.length > 0 ? 
-                
                 compras.map((compra, index, array)=>{
                     if(index+1 === array.length){
-                        console.log(index+1)
-                        console.log(array.length)
                         return <div>
                             <Order key={compra.id} compra={compra}/>
                             <br />
@@ -55,10 +52,7 @@ const Orders = () => {
                             <Order key={compra.id} compra={compra}/>
                             <hr/>
                         </div>
-
                     }
-                    
-
                 })
                 :
                 <div className="order">
