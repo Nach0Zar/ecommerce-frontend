@@ -15,6 +15,7 @@ import Register from './components/register/Register';
 import Login from './components/user/Login';
 import { UsuarioProvider } from './components/user/UserContext';
 import Profile from './components/user/Profile';
+import Faqs from './components/faqs/Faqs';
 
 function App() {
   const { articulosLoaded, cargarArticulos } = useArticulos();
@@ -58,6 +59,7 @@ else
           <Route exact path="/CoderhouseReact/register" element={ <Register />}/>
           <Route exact path="/CoderhouseReact/login" element={ <Login />}/>
           <Route exact path="/CoderhouseReact/user" element={ <Profile />}/>
+          <Route exact path="/CoderhouseReact/faqs" element={ <Faqs />}/>
         </Routes>
         <Footer/>
       </UsuarioProvider>

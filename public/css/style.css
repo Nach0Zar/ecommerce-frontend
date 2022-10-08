@@ -208,6 +208,10 @@ h1 {
   display: flex;
   justify-content: space-evenly;
 }
+.perfilContainer{
+  display: flex;
+  flex-flow: column nowrap;
+}
 #loginDiv, #registerDiv {
   display: table;
   width: 40%;
