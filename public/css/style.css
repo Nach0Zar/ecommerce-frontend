@@ -412,6 +412,19 @@ h1 {
   width: 100%;
 }
 
+.containerCantidadOrder{
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+}
+.order{
+  display: flex;
+  flex-flow: column nowrap;
+}
+.containerCantidadOrder h6, .order h2, .order h4{
+  margin: 5px 20px;
+}
+
 .containerTextosBoton, .containerTextosBotonCarrito {
   display: flex;
   flex-flow: column nowrap;

@@ -17,6 +17,7 @@ import { UsuarioProvider } from './components/user/UserContext';
 import Profile from './components/user/Profile';
 import Faqs from './components/faqs/Faqs';
 import About from './components/about/About';
+import Orders from './components/user/Orders';
 
 function App() {
   const { articulosLoaded, cargarArticulos } = useArticulos();
@@ -62,6 +63,7 @@ else
           <Route exact path="/CoderhouseReact/user" element={ <Profile />}/>
           <Route exact path="/CoderhouseReact/faqs" element={ <Faqs />}/>
           <Route exact path="/CoderhouseReact/about" element={ <About />}/>
+          <Route exact path="/CoderhouseReact/orders" element={ <Orders />}/>
         </Routes>
         <Footer/>
       </UsuarioProvider>

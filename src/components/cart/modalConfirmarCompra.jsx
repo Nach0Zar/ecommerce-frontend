@@ -84,14 +84,17 @@ const ModalConfirmarCompra = (props) => {
             const db = getFirestore();
             const usuarioDoc = doc(db, "usuarios", usuarioDatos.id);
             let listadoDocs = [];
+            let cantidadesItems = [];
             articulos.forEach(articulo => {
                 let articuloDoc = doc(db, "catalogo", articulo.id.toString());
                 listadoDocs.push(articuloDoc);
+                cantidadesItems.push(articulo.cantidad);
             });
             const compra = {
                 usuario: usuarioDoc,
                 items: listadoDocs,
                 date: serverTimestamp(),
+                cantidades: cantidadesItems,
                 total: costoTotal
             }
             let yourDate = new Date();

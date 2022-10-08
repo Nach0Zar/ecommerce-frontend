@@ -110,11 +110,6 @@ const Profile = () => {
             loguearUser(usuarioEditado);
         }
         else{
-            console.log("direc: "+correctDireccion)
-            console.log("pw: "+correctContraseña)
-            console.log("email: "+correctEmail)
-            console.log("dni: "+correctDNI)
-            
             swal("Información errónea", "Los datos ingresados son incorrectos. Por favor, revisar e intentar nuevamente.", "error");
         }
     }
