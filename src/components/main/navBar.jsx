@@ -7,7 +7,8 @@ import { useUsuario } from '../user/UserContext';
 const NavBar = () => {
   const { articulos } = useCart();
   const { usuario, desloguearUser} = useUsuario();
-  const isLoggedIn = (usuario === null)
+  const isLoggedIn = !(usuario === null);
+  
   return (
     <nav className="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
       <div className="container-fluid">
@@ -17,17 +18,19 @@ const NavBar = () => {
         </button>
         <div className="collapse navbar-collapse bg-dark" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <li className="nav-item navLink"><NavLink className="nav-link text-white" to={"/CoderhouseReact/"}>Inicio</NavLink></li>
-            <li className="nav-item navLink"><NavLink className="nav-link text-white" to={"/CoderhouseReact/catalog/"}>Mercado</NavLink></li>
+            <li className="nav-item navLink"><NavLink className="nav-link text-white" to={"/CoderhouseReact/catalog"}>Mercado</NavLink></li>
             <li className="nav-item navLink"><NavLink className="nav-link text-white" to={"/CoderhouseReact/"}>FAQs</NavLink></li>
-            {isLoggedIn && (
+            {!isLoggedIn && (
             <li className="nav-item navLink"><NavLink className="nav-link text-white" to={"/CoderhouseReact/login"}>Loguearse</NavLink></li>
             )}
-            {isLoggedIn && (
+            {!isLoggedIn && (
             <li className="nav-item navLink"><NavLink className="nav-link text-white" to={"/CoderhouseReact/register"}>Registrarse</NavLink></li>
             )}
-            {!isLoggedIn && (
+            {isLoggedIn && (
             <li className="nav-item navLink"><NavLink className="nav-link text-white" to={"/CoderhouseReact/"} onClick={(e)=>{desloguearUser()}}>Desloguearse</NavLink></li>
+            )}
+            {isLoggedIn && (
+            <li className="nav-item navLink"><NavLink className="nav-link text-white" to={"/CoderhouseReact/user"}>Usuario</NavLink></li>
             )}
             <li className="nav-item navLink"><NavLink className="nav-link text-white" to={"/CoderhouseReact/"}>Acerca de nosotros</NavLink></li>
           </ul>

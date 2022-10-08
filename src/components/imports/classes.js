@@ -40,13 +40,14 @@ export class Categoria{
 }
 
 export class Usuario{
-    constructor(nombreUsuario, password, direccion, email, dni){
+    constructor(nombreUsuario, password, direccion, email, dni, telefono){
         this.id = nombreUsuario;
         this.nombreUsuario = nombreUsuario;
         this.password = password;
         this.direccion = direccion;
         this.email = email;
         this.dni = dni;
+        this.telefono = telefono;
     }
     
 };

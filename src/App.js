@@ -14,6 +14,7 @@ import { useCategorias } from './components/category/CategoryContext';
 import Register from './components/register/Register';
 import Login from './components/user/Login';
 import { UsuarioProvider } from './components/user/UserContext';
+import Profile from './components/user/Profile';
 
 function App() {
   const { articulosLoaded, cargarArticulos } = useArticulos();
@@ -36,7 +37,7 @@ function App() {
       .catch((err)=>console.log(err));
       }
     }
-  }, [articulosLoaded, categoriasLoaded])
+  }, [articulosLoaded, categoriasLoaded, cargarArticulos, cargarCategorias])
 
 if(!articulosLoaded || !categoriasLoaded){ 
   return(<LoadingComponent />)} 
@@ -56,6 +57,7 @@ else
           <Route exact path="/CoderhouseReact/cart" element={ <Cart />}/>
           <Route exact path="/CoderhouseReact/register" element={ <Register />}/>
           <Route exact path="/CoderhouseReact/login" element={ <Login />}/>
+          <Route exact path="/CoderhouseReact/user" element={ <Profile />}/>
         </Routes>
         <Footer/>
       </UsuarioProvider>

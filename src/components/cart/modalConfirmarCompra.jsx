@@ -22,7 +22,7 @@ const ModalConfirmarCompra = (props) => {
 
     useEffect(() => {
         if(usuario === null){
-            setUsuarioDatos(new Usuario("nombreUsuario", "", "", "ejemplo@test.com", "12345678"));
+            setUsuarioDatos(new Usuario("nombreUsuario", "", "", "ejemplo@test.com", "12345678", "1111111111"));
         }
         else{
             setUsuarioDatos(usuario);
@@ -154,11 +154,19 @@ const ModalConfirmarCompra = (props) => {
                         </div>
                     </div>
                     <div className="form-group">
-                        <div className="input-group mb-3">
+                        <div className="input-group mb-1">
                             <div className="input-group-prepend">
                                 <span className="input-group-text" id="basic-addon1">DNI</span>
                             </div>
-                        <input type="text" className="form-control" placeholder="DNI del usuario" name="nombre" readOnly="readOnly" defaultValue={usuarioDatos.dni}/>
+                        <input type="text" className="form-control" placeholder="DNI del usuario" name="dni" readOnly="readOnly" defaultValue={usuarioDatos.dni}/>
+                        </div>
+                    </div>
+                    <div className="form-group">
+                        <div className="input-group mb-3">
+                            <div className="input-group-prepend">
+                                <span className="input-group-text" id="basic-addon1">Telefono</span>
+                            </div>
+                        <input type="text" className="form-control" placeholder="Telefono del usuario" name="telefono" readOnly="readOnly" defaultValue={usuarioDatos.telefono}/>
                         </div>
                     </div>
                     <div className="form-group">

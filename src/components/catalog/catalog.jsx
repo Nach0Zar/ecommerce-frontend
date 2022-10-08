@@ -1,5 +1,4 @@
 import React from 'react';
-import { useState, useEffect} from 'react';
 import ItemListed from '../listing/ItemListed';
 import { Link } from 'react-router-dom';
 import { useArticulos } from '../listing/ItemsContext';

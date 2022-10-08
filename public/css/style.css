@@ -199,7 +199,7 @@ h1 {
   margin: 10% auto 0 auto;
 }
 
-.itemDiv, .preguntaDiv, #loginDiv, #registerDiv, #containerAboutus {
+.itemDiv, .preguntaDiv, .perfilDiv, #loginDiv, #registerDiv, #containerAboutus {
   border: 1px lightgrey solid;
 }
 
@@ -268,16 +268,16 @@ h1 {
   align-items: center;
 }
 
-.preguntaDiv, #containerAboutus {
+.preguntaDiv, .perfilDiv, #containerAboutus {
   border-radius: 25px;
   margin: 30px 30px;
 }
 
-.itemDiv:hover, .preguntaDiv:hover, #loginDiv:hover, #registerDiv:hover, #containerAboutus:hover {
+.itemDiv:hover, .perfilDiv:hover, .preguntaDiv:hover, #loginDiv:hover, #registerDiv:hover, #containerAboutus:hover {
   box-shadow: 0 0 11px rgba(33, 33, 33, 0.4);
 }
 
-.preguntaDiv h3, .preguntaDiv p, #containerAboutus h2, #containerAboutus h3 #containerAboutus p {
+.preguntaDiv h3, .preguntaDiv p, .perfilDiv h3, .perfilDiv h5, .perfilDiv p, #containerAboutus h2, #containerAboutus h3 #containerAboutus p {
   margin: 20px 30px;
 }
 

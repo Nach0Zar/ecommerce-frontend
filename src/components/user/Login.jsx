@@ -41,7 +41,7 @@ const Login = () => {
             if(usuarioSnap.data()){
                 if (usuarioSnap.data().password === password){
                     swal("Login","Usuario logueado correctamente!", "success");
-                    const usuario = new Usuario (usuarioSnap.data().nombreUsuario, usuarioSnap.data().password, usuarioSnap.data().direccion, usuarioSnap.data().email, usuarioSnap.data().dni)
+                    const usuario = new Usuario (usuarioSnap.data().nombreUsuario, usuarioSnap.data().password, usuarioSnap.data().direccion, usuarioSnap.data().email, usuarioSnap.data().dni, usuarioSnap.data().telefono)
                     loguearUser(usuario);
                     let path = `/CoderhouseReact/`; 
                     navigate(path);

@@ -4,9 +4,9 @@ import passwordImagen from '../../images/password.svg';
 import mapImagen from '../../images/map.svg';
 import emailImagen from '../../images/email.svg';
 import dniImagen from '../../images/dni.svg';
+import telefonoImagen from '../../images/telefono.svg';
 import { useState } from 'react';
 import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
-import { Usuario } from "../imports/classes";
 import { useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
 
@@ -16,6 +16,7 @@ const Register = () => {
     const [direccion, setDireccion] = useState('');
     const [email, setEmail] = useState('');
     const [dni, setDni] = useState('');
+    const [telefono, setTelefono] = useState('');
     let navigate = useNavigate();
 
     const handleChangeNombreUsuario = (e) => {
@@ -33,6 +34,9 @@ const Register = () => {
     const handleChangeDni = (e) => {
         setDni(e.target.value.slice(0,e.target.maxLength));
     }
+    const handleChangeTelefono = (e) => {
+        setTelefono(e.target.value.slice(0,e.target.maxLength));
+    }
 
     const registrarUsuario = async (e) => {
 
@@ -43,6 +47,9 @@ const Register = () => {
                 allInputsFilled = false;
             }
             if(input.id === "dni" && input.value.toString().length !== input.maxLength){
+                allInputsFilled = false;
+            }
+            if(input.id === "telefono" && input.value.toString().length !== input.maxLength){
                 allInputsFilled = false;
             }
             if(input.id === "email"){
@@ -70,7 +77,8 @@ const Register = () => {
             const usuarioSnap = await getDoc(usuarioDoc);
            
             if(!usuarioSnap.data()){
-                const usuario = new Usuario (nombreUsuario, password, direccion, email, dni);
+                const id = nombreUsuario;
+                const usuario = {id, nombreUsuario, password, direccion, email, dni, telefono};
     
                 await setDoc(doc(db, "usuarios", nombreUsuario), usuario).then(swal("Registrado","Usuario creado correctamente","success"));
                 let path = `/CoderhouseReact/`; 
@@ -114,6 +122,11 @@ const Register = () => {
                         <img src={dniImagen} alt=""/>
                         <span>DNI o Pasaporte</span>
                         <input type="number" id="dni" value={dni} onChange={handleChangeDni} minLength={8} maxLength={8} required/>
+                    </label>
+                    <label htmlFor="telefono" className="registerLabelForm">
+                        <img src={telefonoImagen} alt=""/>
+                        <span>Numero de telefono</span>
+                        <input type="number" id="telefono" value={telefono} onChange={handleChangeTelefono} minLength={10} maxLength={10} required/>
                     </label>
                     <button type="submit" className="btn btn-outline-dark" id="botonRegisterForm" onClick={registrarUsuario}>Registrarse</button>
                 </div>
