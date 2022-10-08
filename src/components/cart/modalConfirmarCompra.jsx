@@ -22,7 +22,7 @@ const ModalConfirmarCompra = (props) => {
 
     useEffect(() => {
         if(usuario === null){
-            setUsuarioDatos(new Usuario("nombreUsuario", "", "", "ejemplo@test.com", "12345678"));
+            setUsuarioDatos(new Usuario("nombreUsuario", "", "", "ejemplo@test.com", "12345678", "1111111111"));
         }
         else{
             setUsuarioDatos(usuario);
@@ -84,24 +84,25 @@ const ModalConfirmarCompra = (props) => {
             const db = getFirestore();
             const usuarioDoc = doc(db, "usuarios", usuarioDatos.id);
             let listadoDocs = [];
+            let cantidadesItems = [];
             articulos.forEach(articulo => {
                 let articuloDoc = doc(db, "catalogo", articulo.id.toString());
                 listadoDocs.push(articuloDoc);
+                cantidadesItems.push(articulo.cantidad);
             });
             const compra = {
                 usuario: usuarioDoc,
                 items: listadoDocs,
                 date: serverTimestamp(),
+                cantidades: cantidadesItems,
                 total: costoTotal
             }
             let yourDate = new Date();
-            const offset = yourDate.getTimezoneOffset();
-            yourDate = new Date(yourDate.getTime() - (offset*60*1000));
             function padTo2Digits(num) {
                 return num.toString().padStart(2, '0');
               }
             //seteo un ID de compra en base al usuario y al tiempo exacto de compra, algo que es único ya que un mismo usuario no puede realizar 2 compras en el mismo instante
-            const compraID = usuarioDatos.id+"-"+yourDate.getFullYear()+"-"+padTo2Digits(yourDate.getMonth() + 1)+"-"+padTo2Digits(yourDate.getDay())+"-"+padTo2Digits(yourDate.getHours())+"-"+padTo2Digits(yourDate.getMinutes())+"-"+padTo2Digits(yourDate.getSeconds());
+            const compraID = usuarioDatos.id+"-"+yourDate.getFullYear()+"-"+padTo2Digits(yourDate.getMonth() + 1)+"-"+padTo2Digits(yourDate.getDay() +2)+"-"+padTo2Digits(yourDate.getHours())+"-"+padTo2Digits(yourDate.getMinutes())+"-"+padTo2Digits(yourDate.getSeconds());
             await setDoc(doc(db, "compras", compraID), compra)
             .then(()=> {
                 //restar a los stocks y vaciar carrito
@@ -154,11 +155,19 @@ const ModalConfirmarCompra = (props) => {
                         </div>
                     </div>
                     <div className="form-group">
-                        <div className="input-group mb-3">
+                        <div className="input-group mb-1">
                             <div className="input-group-prepend">
                                 <span className="input-group-text" id="basic-addon1">DNI</span>
                             </div>
-                        <input type="text" className="form-control" placeholder="DNI del usuario" name="nombre" readOnly="readOnly" defaultValue={usuarioDatos.dni}/>
+                        <input type="text" className="form-control" placeholder="DNI del usuario" name="dni" readOnly="readOnly" defaultValue={usuarioDatos.dni}/>
+                        </div>
+                    </div>
+                    <div className="form-group">
+                        <div className="input-group mb-3">
+                            <div className="input-group-prepend">
+                                <span className="input-group-text" id="basic-addon1">Telefono</span>
+                            </div>
+                        <input type="text" className="form-control" placeholder="Telefono del usuario" name="telefono" readOnly="readOnly" defaultValue={usuarioDatos.telefono}/>
                         </div>
                     </div>
                     <div className="form-group">

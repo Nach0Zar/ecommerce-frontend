@@ -14,6 +14,10 @@ import { useCategorias } from './components/category/CategoryContext';
 import Register from './components/register/Register';
 import Login from './components/user/Login';
 import { UsuarioProvider } from './components/user/UserContext';
+import Profile from './components/user/Profile';
+import Faqs from './components/faqs/Faqs';
+import About from './components/about/About';
+import Orders from './components/user/Orders';
 
 function App() {
   const { articulosLoaded, cargarArticulos } = useArticulos();
@@ -36,7 +40,7 @@ function App() {
       .catch((err)=>console.log(err));
       }
     }
-  }, [articulosLoaded, categoriasLoaded])
+  }, [articulosLoaded, categoriasLoaded, cargarArticulos, cargarCategorias])
 
 if(!articulosLoaded || !categoriasLoaded){ 
   return(<LoadingComponent />)} 
@@ -56,6 +60,10 @@ else
           <Route exact path="/CoderhouseReact/cart" element={ <Cart />}/>
           <Route exact path="/CoderhouseReact/register" element={ <Register />}/>
           <Route exact path="/CoderhouseReact/login" element={ <Login />}/>
+          <Route exact path="/CoderhouseReact/user" element={ <Profile />}/>
+          <Route exact path="/CoderhouseReact/faqs" element={ <Faqs />}/>
+          <Route exact path="/CoderhouseReact/about" element={ <About />}/>
+          <Route exact path="/CoderhouseReact/orders" element={ <Orders />}/>
         </Routes>
         <Footer/>
       </UsuarioProvider>
