@@ -10,14 +10,10 @@ const Orders = () => {
     const isLoggedIn = !(usuario === null);
     const [compras, setCompras] = useState([])
     const [comprasListadas, setComprasListadas] = useState(false)
-
-    
     useEffect(() => {
         const db = getFirestore();
         const getAllOrdersFromUser = async () => {
-            // Primero busco el usuario en mi base de datos en base a su ID, en este caso su nombre
             const usuarioDoc = doc(db, "usuarios", usuario.nombreUsuario);
-            // Luego creo una query filtrando por la referencia del usuario para obtener todos las compras del usuario
             const comprasRef = query(
                 collection(db, "compras"),
                 where("usuario", "==", usuarioDoc)
@@ -33,8 +29,6 @@ const Orders = () => {
             getAllOrdersFromUser()
         }
     }, [compras, isLoggedIn, comprasListadas, usuario])
-
-
     return (
         <div className="ordenesContainer">
             <div className="ordersDiv">
@@ -60,17 +54,11 @@ const Orders = () => {
                     <h4>Puedes comenzar a comprar hoy mismo !</h4>
                     <br/>
                 </div>
-            
                 }
             </div>
         </div>
     )
 }
-
-                        // <div>
-                        //     <Order key={compra.id} compra={compra}/>
-                        //     <hr/>
-                        // </div>
 
 
 export default Orders

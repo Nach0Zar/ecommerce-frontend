@@ -21,9 +21,6 @@ const CartItem = (props) => {
       }
     useEffect(() => {
         setItemQuantity(articulo.id,counterItem);
-        // el comment debajo es debido a que me pedia que agregue setItemQuantity al array de dependencias, pero si se agrega se entra en un loop infinito de rerender,
-        // por lo que opté por silenciarla
-        
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [counterItem,articulo.id])
       

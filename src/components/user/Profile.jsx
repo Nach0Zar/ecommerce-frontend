@@ -62,7 +62,6 @@ const Profile = () => {
                     }
                     break;
                 case 'email':
-                    //validacion de email
                     let lastAtPos = input.value.lastIndexOf("@");
                     let lastDotPos = input.value.lastIndexOf(".");
                     if ((
@@ -89,7 +88,6 @@ const Profile = () => {
                     break;
             }
         });
-        //revisa si todos los inputs fueron llenados correctamente
         if (correctDireccion && correctContraseña && correctEmail && correctDNI){
             const db = getFirestore();
             const usuarioDoc = doc(db, "usuarios", userPerfil.nombreUsuario);

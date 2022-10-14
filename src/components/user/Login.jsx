@@ -13,16 +13,13 @@ const Login = () => {
     const { loguearUser } = useUsuario();
     const [nombreUsuario, setNombreUsuario] = useState('');
     const [password, setPassword] = useState('');
-
     const handleChangeNombreUsuario = (e) => {
         setNombreUsuario(e.target.value);
     }
     const handleChangePassword = (e) => {
         setPassword(e.target.value);
     }
-
     const loguearUsuario = async (e) => {
-
         let inputElements = document.querySelectorAll("input");
         let allInputsFilled = true;
         inputElements.forEach(function(input) {
@@ -31,11 +28,8 @@ const Login = () => {
             }
 
         });
-
         if (allInputsFilled){
             const db = getFirestore();
-
-            //revisa si ya hay un usuario registrado previamente con ese DNI
             const usuarioDoc = doc(db, "usuarios", nombreUsuario);
             const usuarioSnap = await getDoc(usuarioDoc);
             if(usuarioSnap.data()){

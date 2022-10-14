@@ -79,7 +79,6 @@ const ModalConfirmarCompra = (props) => {
                     break;
             }
         });
-        //revisa si todos los inputs fueron llenados correctamente
         if (correctCard && correctCode && correctDate && correctNameCard){
             const db = getFirestore();
             const usuarioDoc = doc(db, "usuarios", usuarioDatos.id);
@@ -101,11 +100,9 @@ const ModalConfirmarCompra = (props) => {
             function padTo2Digits(num) {
                 return num.toString().padStart(2, '0');
               }
-            //seteo un ID de compra en base al usuario y al tiempo exacto de compra, algo que es único ya que un mismo usuario no puede realizar 2 compras en el mismo instante
             const compraID = usuarioDatos.id+"-"+yourDate.getFullYear()+"-"+padTo2Digits(yourDate.getMonth() + 1)+"-"+padTo2Digits(yourDate.getDay() +2)+"-"+padTo2Digits(yourDate.getHours())+"-"+padTo2Digits(yourDate.getMinutes())+"-"+padTo2Digits(yourDate.getSeconds());
             await setDoc(doc(db, "compras", compraID), compra)
             .then(()=> {
-                //restar a los stocks y vaciar carrito
                 articulos.forEach(articulo => {
                     let articuloDoc = doc(db, "catalogo", articulo.id.toString());
                     getDoc(articuloDoc).then((data)=>{

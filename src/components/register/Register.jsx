@@ -53,7 +53,6 @@ const Register = () => {
                 allInputsFilled = false;
             }
             if(input.id === "email"){
-                //validacion de email
                 let lastAtPos = input.value.lastIndexOf("@");
                 let lastDotPos = input.value.lastIndexOf(".");
                 if (!(
@@ -71,8 +70,6 @@ const Register = () => {
 
         if (allInputsFilled){
             const db = getFirestore();
-
-            //revisa si ya hay un usuario registrado previamente con ese DNI
             const usuarioDoc = doc(db, "usuarios", nombreUsuario);
             const usuarioSnap = await getDoc(usuarioDoc);
            
@@ -91,10 +88,7 @@ const Register = () => {
         else{
             swal("Información incorrecta", "La información ingresada es erronea! Por favor revisar la información ingresada y en caso de ser correcta contactarse con el soporte", "warning");
         }
-        
     }
-
-
   return (
     <main>
         <div id="registerDiv">
