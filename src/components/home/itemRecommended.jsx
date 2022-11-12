@@ -6,7 +6,7 @@ const ItemRecommended = (props) => {
     var articulo = props.articulo;
     const URLPage = "/CoderhouseReact/ItemPage/"+articulo.id;
     return (
-        <div className="itemDiv itemRecomendado">
+        <div className="itemDiv recommendedItem">
             <Link to={URLPage} className="noDecoration" >
                 <img src= {articulo.imgSrc} alt=""/>
             </Link>

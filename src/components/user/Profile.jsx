@@ -115,7 +115,7 @@ const Profile = () => {
     return (
         <div>
             {(!isLoggedIn) && <Navigate to="/CoderhouseReact/"/> }
-            <div className="perfilContainer">
+            <div className="profileContainer">
                 <div className="perfilDiv">
                     <h3>Bienvenido {userPerfil.nombreUsuario} !</h3>
                     <h5>Esta es la pestaña de edición de datos</h5>
@@ -181,7 +181,7 @@ const Profile = () => {
                     </form>
                 </div>
             </div>
-
+        <hr />
         </div>
     )
 }

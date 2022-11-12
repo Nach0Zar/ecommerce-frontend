@@ -9,6 +9,7 @@ import { useState } from 'react';
 import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
 import { useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
+import './style.scss';
 
 const Register = () => {
     const [nombreUsuario, setNombreUsuario] = useState('');
@@ -125,10 +126,11 @@ const Register = () => {
                         <span>Numero de telefono</span>
                         <input type="number" id="telefono" value={telefono} onChange={handleChangeTelefono} minLength={10} maxLength={10} required/>
                     </label>
-                    <button type="submit" className="btn btn-outline-dark" id="botonRegisterForm" onClick={registrarUsuario}>Registrarse</button>
+                    <button type="submit" className="btn btn-outline-dark" id="buttonRegisterForm" onClick={registrarUsuario}>Registrarse</button>
                 </div>
             </form>
         </div>
+        <hr />
     </main>
   )
 }

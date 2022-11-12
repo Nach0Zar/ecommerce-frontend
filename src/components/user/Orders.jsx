@@ -4,6 +4,7 @@ import { collection, getDocs, getFirestore, query, where, doc } from "firebase/f
 import { useUsuario } from './UserContext';
 import { useEffect, useState } from 'react';
 import { Navigate } from 'react-router-dom';
+import './style.scss';
 
 const Orders = () => {
     const { usuario } = useUsuario();
@@ -30,33 +31,36 @@ const Orders = () => {
         }
     }, [compras, isLoggedIn, comprasListadas, usuario])
     return (
-        <div className="ordenesContainer">
-            <div className="ordersDiv">
-                {(!isLoggedIn) && <Navigate to="/CoderhouseReact/"/> }
-                {compras.length > 0 ? 
-                compras.map((compra, index, array)=>{
-                    if(index+1 === array.length){
-                        return <div>
-                            <Order key={compra.id} compra={compra}/>
-                            <br />
-                        </div>
+        <main>
+            <div className="containerOrders">
+                <div className="ordersDiv">
+                    {(!isLoggedIn) && <Navigate to="/CoderhouseReact/"/> }
+                    {compras.length > 0 ? 
+                    compras.map((compra, index, array)=>{
+                        if(index+1 === array.length){
+                            return <div>
+                                <Order key={compra.id} compra={compra}/>
+                                <br />
+                            </div>
+                        }
+                        else{
+                            return <div>
+                                <Order key={compra.id} compra={compra}/>
+                                <hr/>
+                            </div>
+                        }
+                    })
+                    :
+                    <div className="order">
+                        <h2>No tienes compras realizadas</h2>
+                        <h4>Puedes comenzar a comprar hoy mismo !</h4>
+                        <br/>
+                    </div>
                     }
-                    else{
-                        return <div>
-                            <Order key={compra.id} compra={compra}/>
-                            <hr/>
-                        </div>
-                    }
-                })
-                :
-                <div className="order">
-                    <h2>No tienes compras realizadas</h2>
-                    <h4>Puedes comenzar a comprar hoy mismo !</h4>
-                    <br/>
                 </div>
-                }
             </div>
-        </div>
+        <hr />
+        </main>
     )
 }
 

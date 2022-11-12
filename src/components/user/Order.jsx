@@ -5,14 +5,9 @@ import ItemListadoOrder from './ItemListadoOrder';
 
 const Order = (props) => {
   const compra = props.compra;
-
   const [listadoItems, setListadoItems] = useState([]);
   const [listadoCargado, setListadoCargado] = useState(false);
   const { articulosListadoDB } = useArticulos();
-
-
-  
-
   useEffect(() => {
     const cargarItemsListado = async () => {
       var listadoItems = [];   
@@ -32,13 +27,10 @@ const Order = (props) => {
     });
     setListadoItems(listadoItems)
     setListadoCargado(true);
-  
-  
     }
     if(!listadoCargado) {
       cargarItemsListado();
     }
-  
   }, [listadoCargado, articulosListadoDB, compra])
   
 
@@ -57,7 +49,7 @@ const Order = (props) => {
       <h2>ID de compra: {compra.id}</h2>
       <h4>Fecha de compra: {datevalues[0]}, {datevalues[1]}, {datevalues[2]}</h4>
       {listadoItems.map((item) => (
-        <div>
+        <div key={item.id}>
           <ItemListadoOrder key={item.id} item={item}/>
         </div>  
       ))}

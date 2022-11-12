@@ -18,8 +18,8 @@ const Carrito = () => {
   }, [articulos])
   return (
     <Link className="nav-link text-white" to={"/CoderhouseReact/cart"}>
-      <div id="cantidadItemsCarritoWidget"><span>{cantidadTotalItems}</span></div>
-      <img id="carrito" src={carritoImg} alt=""/>
+      <div id="cartWidgetQty"><span>{cantidadTotalItems}</span></div>
+      <img id="cartWidget" src={carritoImg} alt=""/>
     </Link>
   )
 }

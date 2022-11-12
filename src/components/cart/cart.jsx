@@ -4,6 +4,7 @@ import ModalConfirmarCompra from './ModalConfirmarCompra';
 import { useCart } from './CartContext';
 import CartItem from './CartItem';
 import { useNavigate } from 'react-router-dom';
+import './style.scss';
 
 const Cart = () => {
   let navigate = useNavigate();
@@ -23,8 +24,8 @@ const Cart = () => {
   }, [articulos, costoSubTotal]);
     
   return (
-    <div id="listado">
-      <div id="listaCarrito">
+    <div id="list">
+      <div id="cartList">
       {
       articulos.length > 0 ?
         articulos.map((articulo)=>(
@@ -35,51 +36,51 @@ const Cart = () => {
         ))
         
         :
-        <div className="elementoCarrito">
-          <div className="containerImagen">
+        <div className="itemCart">
+          <div className="imageContainer">
             <img src="https://upload.wikimedia.org/wikipedia/commons/f/f0/GHS-pictogram-unknown.svg" alt=""/>
           </div>
-          <div className="containerTextosBotonCarrito">
-            <div className="containerTextos">
-              <h4 className="nombreElementoNoSeleccionado">No se selecciono ningun elemento</h4>
+          <div className="buttonTextContainerCart">
+            <div className="noItemDetected">
+              <h4 className="nameElement">No se selecciono ningun elemento</h4>
             </div>
-            <div className="containerBoton">
-              <div className='container'>
-                <button type="button" className="btn btn-outline-dark botonEliminar" onClick={() => navigate("/CoderhouseReact/")}>Volver al Home!</button>
+            <div className="buttonContainerHome">
+              <div className="container">
+                <button type="button" className="btn btn-outline-dark" onClick={() => navigate("/CoderhouseReact/")}>Volver al Home!</button>
               </div>
             </div>
           </div>
         </div>
       }
       </div>
-      <div id="containerTicketBoton">
-          <div id="resumenCarrito">
-              <div id="listaRecibo">
+      <div id="containerResumeButton">
+          <div id="cartResume">
+              <div id="resumeList">
                 {
                   articulos.length > 0 ?
                   articulos.map((articulo)=>(
-                    <div className='containerElementosResumen' key={articulo.id}>
-                      <div className='nombreElementoTicket'>{articulo.nombreArticulo}</div>
-                      <div className='precioMultiplicador'>
-                        <div className='precioElementoTicket'>${articulo.precio}</div>
-                        <div className='precioElementoTicket'>X{articulo.cantidad}</div>
+                    <div className="itemResumeContainer" key={articulo.id}>
+                      <div className="resumeItemName">{articulo.nombreArticulo}</div>
+                      <div className="priceMultiplier">
+                        <div className="resumeItemPrice">${articulo.precio}</div>
+                        <div className="resumeItemPrice">X{articulo.cantidad}</div>
                       </div>
                     </div>
                   ))
                   :
-                  <div className='containerElementosResumen'>
-                    <div className='nombreElementoTicket'>No hay items seleccionados</div>
-                    <div className='precioElementoTicket'>$0</div>
+                  <div className="itemResumeContainer">
+                    <div className="resumeItemName">No hay items seleccionados</div>
+                    <div className="resumeItemPrice">$0</div>
                   </div>
                 }
                 <hr/>
-                <div className='containerElementosResumen'>
-                  <div className='nombreElementoTicket'>Sub-Total</div>
-                  <div className='precioElementoTicket'>${costoSubTotal}</div>
+                <div className="itemResumeContainer">
+                  <div className="resumeItemName">Sub-Total</div>
+                  <div className="resumeItemPrice">${costoSubTotal}</div>
                 </div>
-                <div className='containerElementosResumen'>
-                  <div className='nombreElementoTicket'>
-                    <div className='nombreElementoTicket'>Costo Servicio</div>
+                <div className="itemResumeContainer">
+                  <div className="resumeItemName">
+                    <div className="resumeItemName">Costo Servicio</div>
                     <div id="infoicon">
                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-info-circle" viewBox="0 0 16 16">
                         <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
@@ -88,20 +89,18 @@ const Cart = () => {
                     </div>
                     <div id="info">Por cada articulo agregado al carrito se sumará un importe de $750. No se sumará por cantidad del mismo artículo.</div>
                   </div>
-                  <div className='precioElementoTicket'>${precioServicio}</div>
+                  <div className="resumeItemPrice">${precioServicio}</div>
                 </div>
                 <hr/>
-                <div className='containerElementosResumen'>
-                  <div className='nombreElementoTicket'>TOTAL</div>
-                  <div className='precioElementoTicket'>${costoTotal}</div>
+                <div className="itemResumeContainer">
+                  <div className="resumeItemName">TOTAL</div>
+                  <div className="resumeItemPrice">${costoTotal}</div>
                 </div>
               </div>
           </div>
           <br/>
-          <div id="containerBotonCompra">
-            <div className="containerBoton">                        
-              <button type="button" className={estilo} id="botonCompra" onClick={handleShow}>Realizar compra</button>
-            </div>
+          <div id="buttonPurchaseContainer">                   
+            <button type="button" className={estilo} onClick={handleShow}>Realizar compra</button>
             <ModalConfirmarCompra costoTotal={ (costoTotal)} show={show} onHide={handleClose}/>
           </div>
       </div>

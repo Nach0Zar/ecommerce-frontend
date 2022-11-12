@@ -7,6 +7,7 @@ import { useUsuario } from './UserContext';
 import { Usuario } from '../imports/classes';
 import { useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
+import './style.scss'
 
 const Login = () => {
     let navigate = useNavigate();
@@ -67,10 +68,11 @@ const Login = () => {
                         <span>Contraseña</span>
                         <input type="password" id="contrasenia" value={password} onChange={handleChangePassword} required/>
                     </label>
-                    <button type="submit" className="btn btn-outline-dark" id="botonLoginForm" onClick={loguearUsuario}>Loguearse</button>
+                    <button type="submit" className="btn btn-outline-dark" id="buttonLoginForm" onClick={loguearUsuario}>Loguearse</button>
                 </div>
             </form>
         </div>
+        <hr/>
     </main>
   )
 }

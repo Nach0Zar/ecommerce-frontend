@@ -6,6 +6,7 @@ import { useArticulos } from '../listing/ItemsContext';
 import { useCategorias } from '../category/CategoryContext';
 import { useUsuario } from '../user/UserContext';
 import swal from 'sweetalert';
+import './style.scss';
 
 const ItemPage = () => {
 var {itemId} = useParams();
@@ -86,26 +87,26 @@ const cambiarEstadoArticuloEnCarrito = (event) => {
   return (
     <main>
       <div className="container">
-        <div className="elemento">
-          <div className="containerImagenPaginaDetalle">
+        <div className="item">
+          <div className="imageDetailContainer">
               <img src={articuloCapturado.imgSrc} alt=""/>
           </div>
-          <div className="containerTextosBotonPaginaDetalle">
-              <div className="containerTextosElementos">
-                  <div className="areaPaginaDetalle">
-                    <div id="columnaPaginaDetalle">
-                      <h4 className="nombreElemento">{articuloCapturado.nombreArticulo}</h4>
-                      <p className="descripcionElemento">{articuloCapturado.descripcion}</p>
+          <div className="containerTextsButtonDetail">
+              <div className="textContainer">
+                  <div className="detailPageArea">
+                    <div id="detailPageColumn">
+                      <h4 className="nameElement">{articuloCapturado.nombreArticulo}</h4>
+                      <p className="descriptionElement">{articuloCapturado.descripcion}</p>
                     </div>
-                    <div id="informacionVariada">
-                      <h5 className="precioElemento">${articuloCapturado.precio}</h5>
-                      <div className="containerBotonElemento">
+                    <div id="variedInfo">
+                      <h5 className="priceElement">${articuloCapturado.precio}</h5>
+                      <div className="buttonElementContainer">
                         <button type="button" onClick={cambiarEstadoArticuloEnCarrito} className={estilo} id={idStlye}>{texto}</button>
                       </div>
-                      <h5 className="precioElemento">Categorías</h5>
-                      <div className="categorias">
+                      <h5 className="priceElement">Categorías</h5>
+                      <div className="categories">
                         {categoriasItem.map((categoria) => (
-                        <p className="descripcionElemento" key={categoria.idCategoria}>{categoria.nombreCategoria}</p>
+                        <p className="descriptionElement" key={categoria.idCategoria}>{categoria.nombreCategoria}</p>
                           ))
                           }
                       </div>
@@ -116,6 +117,7 @@ const cambiarEstadoArticuloEnCarrito = (event) => {
           </div>
         </div>
       </div>
+      <hr />
     </main>
   )
 }

@@ -4,7 +4,7 @@ import ItemListRecommended from './ItemListRecommended';
 const ItemListContainerRecommended = () => { 
   return (
     <div>
-        <div id="recomendadosContainer">
+        <div id="recommendedContainer">
             <hr/>
             <h2>Recomendados</h2>
               <ItemListRecommended/>

@@ -1,10 +1,11 @@
 import React from 'react';
 import ItemListContainerRecommended from './ItemListContainerRecommended';
 import Slider from './Slider';
+import './style.scss';
 
 const Home = () => {
   return (
-    <div className="inicio">
+    <div>
         <Slider/>
         <ItemListContainerRecommended/>
     </div>

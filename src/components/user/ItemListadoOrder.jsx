@@ -3,7 +3,7 @@ import React from 'react'
 const ItemListadoOrder = (props) => {
     const item = props.item;
   return (
-    <div className='containerCantidadOrder'>
+    <div className='containerQtyOrders'>
           <h6>
             {item.nombreItem}
           </h6>
