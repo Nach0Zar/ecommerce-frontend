@@ -34,7 +34,7 @@ const Orders = () => {
         <main>
             <div className="containerOrders">
                 <div className="ordersDiv">
-                    {(!isLoggedIn) && <Navigate to="/CoderhouseReact/"/> }
+                    {(!isLoggedIn) && <Navigate to="/ecommerce-frontend/"/> }
                     {compras.length > 0 ? 
                     compras.map((compra, index, array)=>{
                         if(index+1 === array.length){

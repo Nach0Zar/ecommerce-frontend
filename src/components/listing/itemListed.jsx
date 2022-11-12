@@ -4,7 +4,7 @@ import './style.scss';
 
 const ItemListed = (props) => {
     var articulo = props.articulo;
-    const URLPage = "/CoderhouseReact/ItemPage/"+articulo.id;
+    const URLPage = "/ecommerce-frontend/ItemPage/"+articulo.id;
      
   return (
     <Link to={URLPage} className="noDecoration">

@@ -46,7 +46,7 @@ const Cart = () => {
             </div>
             <div className="buttonContainerHome">
               <div className="container">
-                <button type="button" className="btn btn-outline-dark" onClick={() => navigate("/CoderhouseReact/")}>Volver al Home!</button>
+                <button type="button" className="btn btn-outline-dark" onClick={() => navigate("/ecommerce-frontend/")}>Volver al Home!</button>
               </div>
             </div>
           </div>

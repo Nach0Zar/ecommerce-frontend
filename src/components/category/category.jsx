@@ -67,11 +67,11 @@ useEffect(() => {
               <br/>
               <div className="category">
                   <span>Tipo</span>
-                  <div className="subCategory"><span><Link className="noDecoration" to="/CoderhouseReact/category/0">Cosmeticos</Link></span></div>
-                  <div className="subCategory"><span><Link className="noDecoration" to="/CoderhouseReact/category/1">Electrónica</Link></span></div>
-                  <div className="subCategory"><span><Link className="noDecoration" to="/CoderhouseReact/category/2">Alimentos</Link></span></div>
-                  <div className="subCategory"><span><Link className="noDecoration" to="/CoderhouseReact/category/3">Escolares</Link></span></div>
-                  <div className="subCategory"><span><Link className="noDecoration" to="/CoderhouseReact/category/4">Domestico</Link></span></div>
+                  <div className="subCategory"><span><Link className="noDecoration" to="/ecommerce-frontend/category/0">Cosmeticos</Link></span></div>
+                  <div className="subCategory"><span><Link className="noDecoration" to="/ecommerce-frontend/category/1">Electrónica</Link></span></div>
+                  <div className="subCategory"><span><Link className="noDecoration" to="/ecommerce-frontend/category/2">Alimentos</Link></span></div>
+                  <div className="subCategory"><span><Link className="noDecoration" to="/ecommerce-frontend/category/3">Escolares</Link></span></div>
+                  <div className="subCategory"><span><Link className="noDecoration" to="/ecommerce-frontend/category/4">Domestico</Link></span></div>
               </div>
           </div>
           <div id="elementsList">

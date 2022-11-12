@@ -17,7 +17,7 @@ const Carrito = () => {
     setCantidadTotalItems(cantidadItemsTotales);
   }, [articulos])
   return (
-    <Link className="nav-link text-white" to={"/CoderhouseReact/cart"}>
+    <Link className="nav-link text-white" to={"/ecommerce-frontend/cart"}>
       <div id="cartWidgetQty"><span>{cantidadTotalItems}</span></div>
       <img id="cartWidget" src={carritoImg} alt=""/>
     </Link>
