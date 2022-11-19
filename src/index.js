@@ -13,9 +13,9 @@ import { ArticulosProvider } from './components/listing/ItemsContext';
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyBJpTaAWNzBmw_EmX1LpcO-FKjDuQZLF5o",
-  authDomain: "ecommerce-frontend-nach0zar.firebaseapp.com",
-  projectId: "ecommerce-frontend-nach0zar",
-  storageBucket: "ecommerce-frontend-nach0zar.appspot.com",
+  authDomain: "coderhousereact-nach0zar.firebaseapp.com",
+  projectId: "coderhousereact-nach0zar",
+  storageBucket: "coderhousereact-nach0zar.appspot.com",
   messagingSenderId: "1009660668998",
   appId: "1:1009660668998:web:b50c327712e3c45d3eae47"
 };
