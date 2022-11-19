@@ -52,18 +52,18 @@ else
         <Header/>
         <Routes>
           <Route exact path="/" element={ <Home />} />
-          <Route exact path="/CoderhouseReact/" element={ <Home />} />
-          <Route exact path="/CoderhouseReact/catalog" element={ <Catalog />} />
-          <Route path="/CoderhouseReact/itemPage/:itemId" element={ <ItemPage />} />
-          <Route path="/CoderhouseReact/category" element={ <CategoryItems />}/>
-          <Route path="/CoderhouseReact/category/:categoryId" element={ <CategoryItems />}/>
-          <Route exact path="/CoderhouseReact/cart" element={ <Cart />}/>
-          <Route exact path="/CoderhouseReact/register" element={ <Register />}/>
-          <Route exact path="/CoderhouseReact/login" element={ <Login />}/>
-          <Route exact path="/CoderhouseReact/user" element={ <Profile />}/>
-          <Route exact path="/CoderhouseReact/faqs" element={ <Faqs />}/>
-          <Route exact path="/CoderhouseReact/about" element={ <About />}/>
-          <Route exact path="/CoderhouseReact/orders" element={ <Orders />}/>
+          <Route exact path="/ecommerce-frontend/" element={ <Home />} />
+          <Route exact path="/ecommerce-frontend/catalog" element={ <Catalog />} />
+          <Route path="/ecommerce-frontend/itemPage/:itemId" element={ <ItemPage />} />
+          <Route path="/ecommerce-frontend/category" element={ <CategoryItems />}/>
+          <Route path="/ecommerce-frontend/category/:categoryId" element={ <CategoryItems />}/>
+          <Route exact path="/ecommerce-frontend/cart" element={ <Cart />}/>
+          <Route exact path="/ecommerce-frontend/register" element={ <Register />}/>
+          <Route exact path="/ecommerce-frontend/login" element={ <Login />}/>
+          <Route exact path="/ecommerce-frontend/user" element={ <Profile />}/>
+          <Route exact path="/ecommerce-frontend/faqs" element={ <Faqs />}/>
+          <Route exact path="/ecommerce-frontend/about" element={ <About />}/>
+          <Route exact path="/ecommerce-frontend/orders" element={ <Orders />}/>
         </Routes>
         <Footer/>
       </UsuarioProvider>

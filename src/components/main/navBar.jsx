@@ -12,30 +12,30 @@ const NavBar = () => {
   return (
     <nav className="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
       <div className="container-fluid">
-        <NavLink className="navbar-brand" to={"/CoderhouseReact/"}>Zona Compra</NavLink>
+        <NavLink className="navbar-brand" to={"/ecommerce-frontend/"}>Zona Compra</NavLink>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse bg-dark" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <li className="nav-item navLink"><NavLink className="nav-link text-white" to={"/CoderhouseReact/catalog"}>Mercado</NavLink></li>
-            <li className="nav-item navLink"><NavLink className="nav-link text-white" to={"/CoderhouseReact/faqs"}>FAQs</NavLink></li>
+            <li className="nav-item navLink"><NavLink className="nav-link text-white" to={"/ecommerce-frontend/catalog"}>Mercado</NavLink></li>
+            <li className="nav-item navLink"><NavLink className="nav-link text-white" to={"/ecommerce-frontend/faqs"}>FAQs</NavLink></li>
             {!isLoggedIn && (
-            <li className="nav-item navLink"><NavLink className="nav-link text-white" to={"/CoderhouseReact/login"}>Loguearse</NavLink></li>
+            <li className="nav-item navLink"><NavLink className="nav-link text-white" to={"/ecommerce-frontend/login"}>Loguearse</NavLink></li>
             )}
             {!isLoggedIn && (
-            <li className="nav-item navLink"><NavLink className="nav-link text-white" to={"/CoderhouseReact/register"}>Registrarse</NavLink></li>
+            <li className="nav-item navLink"><NavLink className="nav-link text-white" to={"/ecommerce-frontend/register"}>Registrarse</NavLink></li>
             )}
             {isLoggedIn && (
-            <li className="nav-item navLink"><NavLink className="nav-link text-white" to={"/CoderhouseReact/"} onClick={(e)=>{desloguearUser()}}>Desloguearse</NavLink></li>
+            <li className="nav-item navLink"><NavLink className="nav-link text-white" to={"/ecommerce-frontend/"} onClick={(e)=>{desloguearUser()}}>Desloguearse</NavLink></li>
             )}
             {isLoggedIn && (
-            <li className="nav-item navLink"><NavLink className="nav-link text-white" to={"/CoderhouseReact/user"}>Usuario</NavLink></li>
+            <li className="nav-item navLink"><NavLink className="nav-link text-white" to={"/ecommerce-frontend/user"}>Usuario</NavLink></li>
             )}
             {isLoggedIn && (
-            <li className="nav-item navLink"><NavLink className="nav-link text-white" to={"/CoderhouseReact/orders"}>Ordenes</NavLink></li>
+            <li className="nav-item navLink"><NavLink className="nav-link text-white" to={"/ecommerce-frontend/orders"}>Ordenes</NavLink></li>
             )}
-            <li className="nav-item navLink"><NavLink className="nav-link text-white" to={"/CoderhouseReact/about"}>Acerca de nosotros</NavLink></li>
+            <li className="nav-item navLink"><NavLink className="nav-link text-white" to={"/ecommerce-frontend/about"}>Acerca de nosotros</NavLink></li>
           </ul>
         </div>
 

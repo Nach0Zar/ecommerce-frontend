@@ -20,7 +20,7 @@ const Carrito = () => {
   //length en el listado de items
 
   return (
-    <Link className="nav-link text-white" to={"/CoderhouseReact/cart"}>
+    <Link className="nav-link text-white" to={"/ecommerce-frontend/cart"}>
       <div id="cantidadItemsCarritoWidget"><span>{cantidadTotalItems}</span></div>
       <img id="carrito" src={carritoImg} alt=""/>
     </Link>
