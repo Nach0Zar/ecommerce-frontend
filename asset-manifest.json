@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/CoderhouseReact/static/css/main.31d6cfe0.css",
-    "main.js": "/CoderhouseReact/static/js/main.df97f4e6.js",
-    "static/js/787.5f2fe9b5.chunk.js": "/CoderhouseReact/static/js/787.5f2fe9b5.chunk.js",
-    "static/media/usuario.svg": "/CoderhouseReact/static/media/usuario.10eb13f8856b20178a415bd39d235fc0.svg",
-    "static/media/map.svg": "/CoderhouseReact/static/media/map.0eb9f99e6ec3c746f7618c163c466359.svg",
-    "static/media/email.svg": "/CoderhouseReact/static/media/email.c7aadeea80b1beb5743f2f2bda0766a5.svg",
-    "static/media/carrito.svg": "/CoderhouseReact/static/media/carrito.6c882c4c301c37d01d01167692e335f7.svg",
-    "static/media/password.svg": "/CoderhouseReact/static/media/password.1e1ce5acf7dc70d2afda7dd20de37b67.svg",
-    "static/media/dni.svg": "/CoderhouseReact/static/media/dni.a508358a6da4874bbb0ca8c26bf87b5e.svg",
-    "index.html": "/CoderhouseReact/index.html",
-    "static/media/telefono.svg": "/CoderhouseReact/static/media/telefono.752ce068b385264912dfb4a0174da4be.svg",
-    "main.df97f4e6.js.map": "/CoderhouseReact/static/js/main.df97f4e6.js.map",
-    "787.5f2fe9b5.chunk.js.map": "/CoderhouseReact/static/js/787.5f2fe9b5.chunk.js.map"
+    "main.css": "/ecommerce-frontend/static/css/main.31d6cfe0.css",
+    "main.js": "/ecommerce-frontend/static/js/main.ad0855f6.js",
+    "static/js/787.8caa6f87.chunk.js": "/ecommerce-frontend/static/js/787.8caa6f87.chunk.js",
+    "static/media/usuario.svg": "/ecommerce-frontend/static/media/usuario.10eb13f8856b20178a415bd39d235fc0.svg",
+    "static/media/map.svg": "/ecommerce-frontend/static/media/map.0eb9f99e6ec3c746f7618c163c466359.svg",
+    "static/media/email.svg": "/ecommerce-frontend/static/media/email.c7aadeea80b1beb5743f2f2bda0766a5.svg",
+    "static/media/carrito.svg": "/ecommerce-frontend/static/media/carrito.6c882c4c301c37d01d01167692e335f7.svg",
+    "static/media/password.svg": "/ecommerce-frontend/static/media/password.1e1ce5acf7dc70d2afda7dd20de37b67.svg",
+    "static/media/dni.svg": "/ecommerce-frontend/static/media/dni.a508358a6da4874bbb0ca8c26bf87b5e.svg",
+    "index.html": "/ecommerce-frontend/index.html",
+    "static/media/telefono.svg": "/ecommerce-frontend/static/media/telefono.752ce068b385264912dfb4a0174da4be.svg",
+    "main.ad0855f6.js.map": "/ecommerce-frontend/static/js/main.ad0855f6.js.map",
+    "787.8caa6f87.chunk.js.map": "/ecommerce-frontend/static/js/787.8caa6f87.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.31d6cfe0.css",
-    "static/js/main.df97f4e6.js"
+    "static/js/main.ad0855f6.js"
   ]
 }
