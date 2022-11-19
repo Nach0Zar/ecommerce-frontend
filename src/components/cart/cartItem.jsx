@@ -21,37 +21,34 @@ const CartItem = (props) => {
       }
     useEffect(() => {
         setItemQuantity(articulo.id,counterItem);
-        // el comment debajo es debido a que me pedia que agregue setItemQuantity al array de dependencias, pero si se agrega se entra en un loop infinito de rerender,
-        // por lo que opté por silenciarla
-        
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [counterItem,articulo.id])
       
   return (
-    <div className="elementoCarrito" key={articulo.id}>
-        <div className="containerImagen">
+    <div className="itemCart" key={articulo.id}>
+        <div className="imageContainer">
             <img src={articulo.imgSrc} alt=""/>
         </div>
-        <div className="containerTextosBotonCarrito">
-            <div className="containerTextos">
-                <div className="tituloPrecioCarrito">
-                    <h4 className="nombreElemento">{articulo.nombreArticulo}</h4>
-                    <h5 className="precioElemento">${articulo.precio}</h5>
+        <div className="buttonTextContainerCart">
+            <div className="textContainerCartItem">
+                <div className="textContainerCartItem">
+                    <h4 className="nameElement">{articulo.nombreArticulo}</h4>
+                    <h5 className="priceElement">${articulo.precio}</h5>
                 </div>
             </div>
-            <div className="containerBotones">
-                <div className="containerCantidad">
+            <div className="buttonQtyCartConteiner">
+                <div className="buttonsCentered">
                     <div className="containerCantidadBotones">
                         <div className="input-group w-auto align-items-center">
-                            <input type="button" value="-" className="botonRestar" onClick={handleSubstractItemOnClick}/>
-                            <div className="cantidadElemento">{counterItem}</div>
-                            <input type="button" value="+" className="botonAgregar" onClick={handleAddItemOnClick}/>
+                            <input type="button" value="-" className="buttonQty" onClick={handleSubstractItemOnClick}/>
+                            <div className="itemQuantity">{counterItem}</div>
+                            <input type="button" value="+" className="buttonQty" onClick={handleAddItemOnClick}/>
                         </div>
                     </div>
                 </div>   
-                <div className="containerBotonEliminar">
-                    <div className="containerBoton">
-                        <button type="button" className="btn btn-outline-dark botonEliminar" onClick={removeFromCartHandler}>Quitar Articulo</button>
+                <div className="deleteItemButtonContainer">
+                    <div className="buttonContainer">
+                        <button type="button" className="btn btn-outline-dark" onClick={removeFromCartHandler}>Quitar Articulo</button>
                     </div>
                 </div>
             </div>

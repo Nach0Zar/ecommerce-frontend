@@ -26,24 +26,20 @@ const ItemCount = (props) => {
     }
     
   return (
-    <>
-      <div className="containerCantidadLanding">
-          <div className="containerCantidadBotones2">
-              <div className="input-group w-auto align-items-center">
-                  <input type="button" value="-" className="botonRestar" onClick={handleSubstractItemOnClick}/>
-                  <div className="cantidadElemento">{counterItem}</div>
-                  <input type="button" value="+" className="botonAgregar" onClick={handleAddItemOnClick}/>
-              </div>
+    <div className="containerQtyButton">
+      <div className="containerQuantity">
+          <div className="input-group w-auto align-items-center">
+              <input type="button" value="-" className="buttonQty" onClick={handleSubstractItemOnClick}/>
+              <div className="itemQuantity">{counterItem}</div>
+              <input type="button" value="+" className="buttonQty" onClick={handleAddItemOnClick}/>
           </div>
       </div>
-      <div className="containerCantidadLanding">
-        <div className="containerCantidadBotones2">
-          <div className="input-group w-auto align-items-center">
-              <button type="button" className="btn btn-outline-dark" onClick={addToCartHandler}>Agregar al carrito</button>
-          </div>
+      <div className="containerQuantity">
+        <div className="input-group w-auto align-items-center">
+            <button type="button" className="btn btn-outline-dark" onClick={addToCartHandler}>Agregar al carrito</button>
         </div>
       </div>
-    </>
+    </div>
   )
 }
 

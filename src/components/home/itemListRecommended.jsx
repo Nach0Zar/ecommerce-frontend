@@ -18,7 +18,7 @@ const ItemListRecommended = () => {
     }, []);
 
   return (
-    <div id="recomendados">
+    <div id="recommendations">
         {items.map((item) => (
             <ItemRecommended key={item.id} articulo={item}/>
         ))

@@ -18,7 +18,7 @@ const NavBar = () => {
         </button>
         <div className="collapse navbar-collapse bg-dark" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <li className="nav-item navLink"><NavLink className="nav-link text-white" to={"/ecommerce-frontend/catalog"}>Mercado</NavLink></li>
+            <li className="nav-item navLink"><NavLink className="nav-link text-white" to={"/ecommerce-frontend/category"}>Mercado</NavLink></li>
             <li className="nav-item navLink"><NavLink className="nav-link text-white" to={"/ecommerce-frontend/faqs"}>FAQs</NavLink></li>
             {!isLoggedIn && (
             <li className="nav-item navLink"><NavLink className="nav-link text-white" to={"/ecommerce-frontend/login"}>Loguearse</NavLink></li>

@@ -4,17 +4,12 @@ import { useContext, useState } from 'react';
 import { collection, getDocs, getFirestore, getDoc, doc } from "firebase/firestore";
 
 const CategoriasContext = React.createContext([]);
-
   const useCategorias = () => {
     return useContext(CategoriasContext);
   }
-
   const CategoriasProvider = ({defaultValue = [], children}) => {
   const [categoriasListadoDB, setCategoriasListadoDB] = useState(defaultValue);
   const [categoriasLoaded, setCategoriasLoaded] = useState(false);
-  
-
-  //carga todas las categorias a la variable categoriasListadoDB para tenerlos de facil acceso en memoria
   const cargarCategorias = async () => {
     const db = getFirestore();
     var listadoDB = [];
@@ -26,8 +21,6 @@ const CategoriasContext = React.createContext([]);
     setCategoriasLoaded(true);
     setCategoriasListadoDB(categoriasListado);
   }
-
-  //genera la categoría luego de consultar a la DB en base a su ID
   const obtenerCategoriaPorID = async (categoryId) => {
     const db = getFirestore();
     var listadoDB;
@@ -38,8 +31,6 @@ const CategoriasContext = React.createContext([]);
     var categoriaCreada= new Categoria(listadoDB.idCategoria, listadoDB.nombreCategoria);
     return categoriaCreada;
   }
-
-  //genera un listado de categorias en base a los IDs de categorias de un articulo buscandolas en el array de categorias que se consulta al inicio
   const obtenerCategoriasPorArticulo = async (articulo) => {
     var categoriasSeleccionadas = [];
     categoriasListadoDB.forEach((categoria)=>{
@@ -47,8 +38,6 @@ const CategoriasContext = React.createContext([]);
     })
     return categoriasSeleccionadas;
   }
-
-  //genera las categorias del listado en base a la respuesta de la consulta hacia la DB
   const obtenerTodasLasCategorias = async (listadoDB) => {
     var categoriasLista = [];
     listadoDB.forEach((categoria)=>{
@@ -63,12 +52,10 @@ const CategoriasContext = React.createContext([]);
     obtenerCategoriaPorID,
     obtenerCategoriasPorArticulo
   }
-    
   return (
     <CategoriasContext.Provider value={context}>
       {children}
     </CategoriasContext.Provider>
   )
-
 }
 export {useCategorias, CategoriasProvider}

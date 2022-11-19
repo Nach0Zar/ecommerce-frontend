@@ -5,7 +5,7 @@ import ItemListed from '../listing/ItemListed';
 import { Link } from 'react-router-dom';
 import { useArticulos } from '../listing/ItemsContext';
 import { useCategorias } from './CategoryContext';
-
+import './style.scss';
 
 const CategoryItems = () => {
 const { articulosListadoDB, obtenerItemsPorCategoria } = useArticulos();
@@ -13,8 +13,6 @@ const { obtenerCategoriaPorID } = useCategorias();
 const [itemsCategory, setItemsCategory] = useState([]);
 var {categoryId} = useParams();
 (categoryId===undefined) && (categoryId = -1);
-
-
 useEffect(() => {
   
 
@@ -44,39 +42,39 @@ useEffect(() => {
 
   return (
     <main>
-      <div id="catalogo">
-          <div id="barraLateral">
-              <div className="categoria">
+      <div id="catalog">
+          <div id="sideBar">
+              <div className="category">
                   <span>Descuentos</span>
-                  <div className="subCategoria"><span>5% OFF</span></div>
-                  <div className="subCategoria"><span>10% OFF</span></div>
-                  <div className="subCategoria"><span>15% OFF</span></div>
+                  <div className="subCategory"><span>5% OFF</span></div>
+                  <div className="subCategory"><span>10% OFF</span></div>
+                  <div className="subCategory"><span>15% OFF</span></div>
               </div>
               <br/>
-              <div className="categoria">
+              <div className="category">
                   <span>Ubicacion</span>
-                  <div className="subCategoria"><span>Argentina</span></div>
-                  <div className="subCategoria"><span>Brasil</span></div>
-                  <div className="subCategoria"><span>Chile</span></div>
-                  <div className="subCategoria"><span>Colombia</span></div>
+                  <div className="subCategory"><span>Argentina</span></div>
+                  <div className="subCategory"><span>Brasil</span></div>
+                  <div className="subCategory"><span>Chile</span></div>
+                  <div className="subCategory"><span>Colombia</span></div>
               </div>
               <br/>
-              <div className="categoria">
+              <div className="category">
                   <span>Condicion</span>
-                  <div className="subCategoria"><span>Nuevo</span></div>
-                  <div className="subCategoria"><span>Usado</span></div>
+                  <div className="subCategory"><span>Nuevo</span></div>
+                  <div className="subCategory"><span>Usado</span></div>
               </div>
               <br/>
-              <div className="categoria">
+              <div className="category">
                   <span>Tipo</span>
-                  <div className="subCategoria"><span><Link className="noDecoration" to="/ecommerce-frontend/category/0">Cosmeticos</Link></span></div>
-                  <div className="subCategoria"><span><Link className="noDecoration" to="/ecommerce-frontend/category/1">Electrónica</Link></span></div>
-                  <div className="subCategoria"><span><Link className="noDecoration" to="/ecommerce-frontend/category/2">Alimentos</Link></span></div>
-                  <div className="subCategoria"><span><Link className="noDecoration" to="/ecommerce-frontend/category/3">Escolares</Link></span></div>
-                  <div className="subCategoria"><span><Link className="noDecoration" to="/ecommerce-frontend/category/4">Domestico</Link></span></div>
+                  <div className="subCategory"><span><Link className="noDecoration" to="/ecommerce-frontend/category/0">Cosmeticos</Link></span></div>
+                  <div className="subCategory"><span><Link className="noDecoration" to="/ecommerce-frontend/category/1">Electrónica</Link></span></div>
+                  <div className="subCategory"><span><Link className="noDecoration" to="/ecommerce-frontend/category/2">Alimentos</Link></span></div>
+                  <div className="subCategory"><span><Link className="noDecoration" to="/ecommerce-frontend/category/3">Escolares</Link></span></div>
+                  <div className="subCategory"><span><Link className="noDecoration" to="/ecommerce-frontend/category/4">Domestico</Link></span></div>
               </div>
           </div>
-          <div id="listaDeObjetos">
+          <div id="elementsList">
           { itemsCategory.map((item) => (
               <div key={item.id}>
                 <ItemListed articulo={item}/>
@@ -86,6 +84,7 @@ useEffect(() => {
           }
           </div>
       </div>
+      <hr />
     </main>
   )
 }

@@ -1,7 +1,7 @@
+import './App.css';
 import Footer from './components/main/Footer';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from './components/home/Home';
-import Catalog from './components/catalog/Catalog';
 import ItemPage from './components/itemPage/ItemPage';
 import CategoryItems from './components/category/Category';
 import Cart from './components/cart/Cart';
@@ -18,6 +18,7 @@ import Profile from './components/user/Profile';
 import Faqs from './components/faqs/Faqs';
 import About from './components/about/About';
 import Orders from './components/user/Orders';
+
 
 function App() {
   const { articulosLoaded, cargarArticulos } = useArticulos();
@@ -53,7 +54,6 @@ else
         <Routes>
           <Route exact path="/" element={ <Home />} />
           <Route exact path="/ecommerce-frontend/" element={ <Home />} />
-          <Route exact path="/ecommerce-frontend/catalog" element={ <Catalog />} />
           <Route path="/ecommerce-frontend/itemPage/:itemId" element={ <ItemPage />} />
           <Route path="/ecommerce-frontend/category" element={ <CategoryItems />}/>
           <Route path="/ecommerce-frontend/category/:categoryId" element={ <CategoryItems />}/>

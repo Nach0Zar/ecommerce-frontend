@@ -9,6 +9,7 @@ import { useState } from 'react';
 import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
 import { useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
+import './style.scss';
 
 const Register = () => {
     const [nombreUsuario, setNombreUsuario] = useState('');
@@ -53,7 +54,6 @@ const Register = () => {
                 allInputsFilled = false;
             }
             if(input.id === "email"){
-                //validacion de email
                 let lastAtPos = input.value.lastIndexOf("@");
                 let lastDotPos = input.value.lastIndexOf(".");
                 if (!(
@@ -71,8 +71,6 @@ const Register = () => {
 
         if (allInputsFilled){
             const db = getFirestore();
-
-            //revisa si ya hay un usuario registrado previamente con ese DNI
             const usuarioDoc = doc(db, "usuarios", nombreUsuario);
             const usuarioSnap = await getDoc(usuarioDoc);
            
@@ -88,10 +86,10 @@ const Register = () => {
                 swal("Usuario ya registrado", "El Nombre de Usuario ya fue registrado!", "warning");
             }
         }
-        
+        else{
+            swal("Información incorrecta", "La información ingresada es erronea! Por favor revisar la información ingresada y en caso de ser correcta contactarse con el soporte", "warning");
+        }
     }
-
-
   return (
     <main>
         <div id="registerDiv">
@@ -128,10 +126,11 @@ const Register = () => {
                         <span>Numero de telefono</span>
                         <input type="number" id="telefono" value={telefono} onChange={handleChangeTelefono} minLength={10} maxLength={10} required/>
                     </label>
-                    <button type="submit" className="btn btn-outline-dark" id="botonRegisterForm" onClick={registrarUsuario}>Registrarse</button>
+                    <button type="submit" className="btn btn-outline-dark" id="buttonRegisterForm" onClick={registrarUsuario}>Registrarse</button>
                 </div>
             </form>
         </div>
+        <hr />
     </main>
   )
 }
